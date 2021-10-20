@@ -31,6 +31,8 @@ public class login extends javax.swing.JFrame {
         header = new javax.swing.JPanel();
         close = new javax.swing.JPanel();
         closeButtonLabel = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -44,8 +46,8 @@ public class login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Poppins Medium", 0, 32)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Login Vendedor");
-        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 56, 270, 40));
+        jLabel2.setText("VENDEDOR");
+        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 56, 400, 40));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -74,8 +76,8 @@ public class login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Poppins Light", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Inicie sesión para continuar");
-        background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(506, 96, -1, -1));
+        jLabel3.setText("Iniciar sesión para continuar");
+        background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(399, 96, 400, -1));
 
         titleSeparator1.setForeground(new java.awt.Color(51, 51, 51));
         background.add(titleSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 400, 20));
@@ -105,7 +107,7 @@ public class login extends javax.swing.JFrame {
 
         lognPassLabel.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
         lognPassLabel.setForeground(new java.awt.Color(102, 102, 102));
-        lognPassLabel.setText("Ingrese su contraseña");
+        lognPassLabel.setText("Ingresar contraseña");
         background.add(lognPassLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 270, 190, -1));
         background.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 322, 270, 10));
 
@@ -210,6 +212,14 @@ public class login extends javax.swing.JFrame {
         );
 
         background.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 40));
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/password.png"))); // NOI18N
+        background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 40, 40));
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user.png"))); // NOI18N
+        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 40, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -337,6 +347,8 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel lognPassLabel;
