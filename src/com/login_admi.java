@@ -2,11 +2,11 @@ package com;
 
 import java.awt.Color;
 
-public class loginVendedor extends javax.swing.JFrame {
+public class login_admi extends javax.swing.JFrame {
 
     int xMouse,yMouse;
     
-    public loginVendedor() {
+    public login_admi() {
         initComponents();
     }
 
@@ -15,9 +15,9 @@ public class loginVendedor extends javax.swing.JFrame {
     private void initComponents() {
 
         background = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         titleSeparator1 = new javax.swing.JSeparator();
         lognUserLabel = new javax.swing.JLabel();
@@ -40,14 +40,13 @@ public class loginVendedor extends javax.swing.JFrame {
         setResizable(false);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setToolTipText("");
+        background.setAlignmentX(0.0F);
+        background.setAlignmentY(0.0F);
+        background.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        background.setMinimumSize(new java.awt.Dimension(800, 540));
         background.setPreferredSize(new java.awt.Dimension(800, 500));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Poppins Medium", 0, 32)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("VENDEDOR");
-        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 56, 400, 40));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -72,6 +71,12 @@ public class loginVendedor extends javax.swing.JFrame {
         );
 
         background.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 540));
+
+        jLabel2.setFont(new java.awt.Font("Poppins Medium", 0, 32)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("ADMINISTRADOR");
+        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 56, 400, 40));
 
         jLabel3.setFont(new java.awt.Font("Poppins Light", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -225,66 +230,15 @@ public class loginVendedor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void lognUserTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lognUserTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lognUserTextFieldActionPerformed
-
-    private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
-        //nops ayuda a saber la posición de nuestro mouse para luego mover la
-        //barra a voluntad.
-        xMouse = evt.getX();
-        yMouse = evt.getY();
-    }//GEN-LAST:event_headerMousePressed
-
-    private void headerMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMouseDragged
-        //con esta acción podemos mover la barra a volundad
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x-xMouse, y-yMouse);
-    }//GEN-LAST:event_headerMouseDragged
-
-    private void closeButtonLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeButtonLabelMouseClicked
-        dispose();
-        java.awt.EventQueue.invokeLater(() -> {
-            new quienEres().setVisible(true);
-        });
-    }//GEN-LAST:event_closeButtonLabelMouseClicked
-
-    private void closeButtonLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeButtonLabelMouseEntered
-        close.setBackground(Color.red);
-        closeButtonLabel.setForeground(Color.white);
-    }//GEN-LAST:event_closeButtonLabelMouseEntered
-
-    private void closeButtonLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeButtonLabelMouseExited
-        close.setBackground(Color.white);
-        closeButtonLabel.setForeground(Color.black);
-    }//GEN-LAST:event_closeButtonLabelMouseExited
-
-    private void entrarLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarLabelMouseExited
-        buttonPanel.setBackground(Color.BLACK);
-        entrarLabel.setForeground(Color.white);
-    }//GEN-LAST:event_entrarLabelMouseExited
-
-    private void entrarLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarLabelMouseEntered
-        buttonPanel.setBackground(new Color(106,105,105));
-        entrarLabel.setForeground(Color.BLACK);
-    }//GEN-LAST:event_entrarLabelMouseEntered
-
-    private void entrarLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarLabelMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_entrarLabelMouseClicked
 
     private void lognUserTextFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lognUserTextFieldMousePressed
         if(lognUserTextField.getText().equals("Nombre de usuario")){
@@ -297,6 +251,24 @@ public class loginVendedor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lognUserTextFieldMousePressed
 
+    private void lognUserTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lognUserTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lognUserTextFieldActionPerformed
+
+    private void entrarLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarLabelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_entrarLabelMouseClicked
+
+    private void entrarLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarLabelMouseEntered
+        buttonPanel.setBackground(new Color(106,105,105));
+        entrarLabel.setForeground(Color.BLACK);
+    }//GEN-LAST:event_entrarLabelMouseEntered
+
+    private void entrarLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarLabelMouseExited
+        buttonPanel.setBackground(Color.BLACK);
+        entrarLabel.setForeground(Color.white);
+    }//GEN-LAST:event_entrarLabelMouseExited
+
     private void passFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passFieldMousePressed
         if(String.valueOf(passField.getPassword()).equals("******************")){
             passField.setText("");
@@ -308,16 +280,62 @@ public class loginVendedor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_passFieldMousePressed
 
+    private void closeButtonLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeButtonLabelMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_closeButtonLabelMouseClicked
+
+    private void closeButtonLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeButtonLabelMouseEntered
+        close.setBackground(Color.red);
+        closeButtonLabel.setForeground(Color.white);
+    }//GEN-LAST:event_closeButtonLabelMouseEntered
+
+    private void closeButtonLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeButtonLabelMouseExited
+        close.setBackground(Color.white);
+        closeButtonLabel.setForeground(Color.black);
+    }//GEN-LAST:event_closeButtonLabelMouseExited
+
+    private void headerMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x-xMouse, y-yMouse);
+    }//GEN-LAST:event_headerMouseDragged
+
+    private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_headerMousePressed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-    
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(login_admi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(login_admi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(login_admi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(login_admi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new loginVendedor().setVisible(true);
+                new login_admi().setVisible(true);
             }
         });
     }
