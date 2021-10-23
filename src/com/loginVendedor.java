@@ -232,18 +232,24 @@ public class loginVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_lognUserTextFieldActionPerformed
 
     private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
+        //nops ayuda a saber la posición de nuestro mouse para luego mover la
+        //barra a voluntad.
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_headerMousePressed
 
     private void headerMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMouseDragged
+        //con esta acción podemos mover la barra a volundad
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x-xMouse, y-yMouse);
     }//GEN-LAST:event_headerMouseDragged
 
     private void closeButtonLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeButtonLabelMouseClicked
-        System.exit(0);
+        dispose();
+        java.awt.EventQueue.invokeLater(() -> {
+            new quienEres().setVisible(true);
+        });
     }//GEN-LAST:event_closeButtonLabelMouseClicked
 
     private void closeButtonLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeButtonLabelMouseEntered
@@ -297,29 +303,7 @@ public class loginVendedor extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(loginVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(loginVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(loginVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(loginVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
+    
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
