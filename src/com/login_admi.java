@@ -37,6 +37,7 @@ public class login_admi extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
@@ -75,13 +76,14 @@ public class login_admi extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Poppins Medium", 0, 32)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("ADMINISTRADOR");
-        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 56, 400, 40));
+        jLabel2.setText("Login Administrador");
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 56, 400, 40));
 
         jLabel3.setFont(new java.awt.Font("Poppins Light", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Iniciar sesión para continuar");
+        jLabel3.setText("Inicie sesión para continuar");
         background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(399, 96, 400, -1));
 
         titleSeparator1.setForeground(new java.awt.Color(51, 51, 51));
@@ -281,7 +283,10 @@ public class login_admi extends javax.swing.JFrame {
     }//GEN-LAST:event_passFieldMousePressed
 
     private void closeButtonLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeButtonLabelMouseClicked
-        System.exit(0);
+       dispose();
+        java.awt.EventQueue.invokeLater(() -> {
+            new quienEres().setVisible(true);
+        });
     }//GEN-LAST:event_closeButtonLabelMouseClicked
 
     private void closeButtonLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeButtonLabelMouseEntered
@@ -304,42 +309,6 @@ public class login_admi extends javax.swing.JFrame {
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_headerMousePressed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login_admi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login_admi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login_admi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login_admi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new login_admi().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JPanel buttonPanel;

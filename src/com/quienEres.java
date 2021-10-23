@@ -37,6 +37,7 @@ public class quienEres extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
@@ -113,7 +114,6 @@ public class quienEres extends javax.swing.JFrame {
         admiLabel.setText("Administrador");
         admiLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         admiLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        admiLabel.setPreferredSize(null);
         admiLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 admiLabelMouseClicked(evt);
@@ -236,7 +236,10 @@ public class quienEres extends javax.swing.JFrame {
     }//GEN-LAST:event_admiLabelMouseExited
 
     private void admiLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_admiLabelMouseClicked
-        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(() -> {
+            new login_admi().setVisible(true);
+        });
+        dispose();
     }//GEN-LAST:event_admiLabelMouseClicked
 
     private void vendedorLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vendedorLabelMouseEntered

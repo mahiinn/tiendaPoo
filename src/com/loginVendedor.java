@@ -37,6 +37,7 @@ public class loginVendedor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
@@ -46,7 +47,7 @@ public class loginVendedor extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Poppins Medium", 0, 32)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("VENDEDOR");
+        jLabel2.setText("Login Vendedor");
         background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 56, 400, 40));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
@@ -76,7 +77,7 @@ public class loginVendedor extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Poppins Light", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Iniciar sesión para continuar");
+        jLabel3.setText("Inicie sesión para continuar");
         background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(399, 96, 400, -1));
 
         titleSeparator1.setForeground(new java.awt.Color(51, 51, 51));
@@ -307,21 +308,6 @@ public class loginVendedor extends javax.swing.JFrame {
             lognUserTextField.setForeground(Color.gray);
         }
     }//GEN-LAST:event_passFieldMousePressed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-    
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new loginVendedor().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JPanel buttonPanel;
