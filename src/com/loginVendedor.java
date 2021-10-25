@@ -2,6 +2,7 @@ package com;
 
 import static com.app.*;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 public class loginVendedor extends javax.swing.JFrame {
 
@@ -285,7 +286,16 @@ public class loginVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_entrarLabelMouseEntered
 
     private void entrarLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarLabelMouseClicked
-        
+        lognUserTextField.getText();
+        char [] contraseña=passField.getPassword();
+        if(confirmarVendedor(lognUserTextField.getText(),contraseña)){
+            dispose();
+            java.awt.EventQueue.invokeLater(() -> {
+                new menuVendedor().setVisible(true);
+            });
+        }else{
+            JOptionPane.showMessageDialog(null,"Contraseña y/o user inválidos, por favor intente de nuevo");
+        }
     }//GEN-LAST:event_entrarLabelMouseClicked
 
     private void lognUserTextFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lognUserTextFieldMousePressed

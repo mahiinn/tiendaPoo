@@ -10,7 +10,7 @@ public class app {
         Date objDate = new Date();
         String strDateFormat = "hh: mm: ss a dd-MMM-aaaa"; // El formato de fecha está especificado  
         SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat); // La cadena de formato de fecha se pasa como un argumento al objeto de formato de fecha  
-        System.out.println(objSDF.format(objDate)); // El formato de fecha se aplica a la fecha actual
+        //System.out.println(objSDF.format(objDate)); // El formato de fecha se aplica a la fecha actual
         return objSDF.format(objDate);
     }
     public static void llenarComboBox(JComboBox comboBox){
@@ -44,6 +44,14 @@ public class app {
             contraseña=String.valueOf(password);
         }
         return userAdmi.toLowerCase().equals("eladmin")&&contraseña.equals("5695");
+        
+    }
+    public static boolean confirmarVendedor(String userAdmi, char[] password){
+        String contraseña="";
+        for (int i = 0; i < password.length; i++) {
+            contraseña=String.valueOf(password);
+        }
+        return userAdmi.toLowerCase().equals("vendedor1")&&contraseña.equals("5695");
         
     }
 }
