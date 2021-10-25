@@ -237,7 +237,7 @@ public class quienEres extends javax.swing.JFrame {
 
     private void admiLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_admiLabelMouseClicked
         java.awt.EventQueue.invokeLater(() -> {
-            new login_admi().setVisible(true);
+            new loginAdmi().setVisible(true);
         });
         dispose();
     }//GEN-LAST:event_admiLabelMouseClicked

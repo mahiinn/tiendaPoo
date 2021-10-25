@@ -1,7 +1,5 @@
 package com;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,5 +37,13 @@ public class app {
                 System.out.println(productos.get(i).getCantidad());
             }
         }
+    }
+    public static boolean confirmarAdministrador(String userAdmi, char[] password){
+        String contraseña="";
+        for (int i = 0; i < password.length; i++) {
+            contraseña=String.valueOf(password);
+        }
+        return userAdmi.toLowerCase().equals("eladmin")&&contraseña.equals("5695");
+        
     }
 }

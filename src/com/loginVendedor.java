@@ -1,5 +1,6 @@
 package com;
 
+import static com.app.*;
 import java.awt.Color;
 
 public class loginVendedor extends javax.swing.JFrame {
@@ -284,7 +285,7 @@ public class loginVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_entrarLabelMouseEntered
 
     private void entrarLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarLabelMouseClicked
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_entrarLabelMouseClicked
 
     private void lognUserTextFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lognUserTextFieldMousePressed

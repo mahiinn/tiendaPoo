@@ -1,12 +1,14 @@
 package com;
 
+import static com.app.confirmarAdministrador;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
-public class login_admi extends javax.swing.JFrame {
+public class loginAdmi extends javax.swing.JFrame {
 
     int xMouse,yMouse;
     
-    public login_admi() {
+    public loginAdmi() {
         initComponents();
     }
 
@@ -37,7 +39,6 @@ public class login_admi extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
@@ -103,11 +104,6 @@ public class login_admi extends javax.swing.JFrame {
         lognUserTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lognUserTextFieldMousePressed(evt);
-            }
-        });
-        lognUserTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lognUserTextFieldActionPerformed(evt);
             }
         });
         background.add(lognUserTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 210, 270, 40));
@@ -253,12 +249,17 @@ public class login_admi extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lognUserTextFieldMousePressed
 
-    private void lognUserTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lognUserTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lognUserTextFieldActionPerformed
-
     private void entrarLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarLabelMouseClicked
-        // TODO add your handling code here:
+        lognUserTextField.getText();
+        char [] contraseña=passField.getPassword();
+        if(confirmarAdministrador(lognUserTextField.getText(),contraseña)){
+            dispose();
+            java.awt.EventQueue.invokeLater(() -> {
+                new menuAdmi().setVisible(true);
+            });
+        }else{
+            JOptionPane.showMessageDialog(null,"Contraseña y/o user inválidos, por favor intente de nuevo");
+        }
     }//GEN-LAST:event_entrarLabelMouseClicked
 
     private void entrarLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarLabelMouseEntered
