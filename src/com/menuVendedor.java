@@ -858,22 +858,32 @@ public class menuVendedor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_verFacturasLabelMouseExited
 
-    
+
     private void agregarProductoButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarProductoButtonMouseClicked
         int cantidad = Integer.parseInt(cantProductoTextField.getText());
         double precio = Double.parseDouble(precioUnitario.getText());
-        total = (cantidad * precio) + total;
-        totalPagarTextField.setText(String.valueOf(total));
-        String data = (idProductoTextField.getText() + " - "
-                + nombreProductoTextField.getText() + " - "
-                + cantProductoTextField.getText() + " x "
-                + precioUnitario.getText() + ":   "
-                + String.valueOf(cantidad * precio));
-        datosIngresados.addElement(data);
         int idProducto = Integer.parseInt(idProductoTextField.getText());
-        restarCantidad(cantidad, idProducto);
-        resetearCasillasParcial();
-        cantidadTotalProductos++;
+        for (int i = 0; i < productos.size(); i++) {
+            if (productos.get(i).getIdProducto() == idProducto) {
+                if(productos.get(i).getCantidad() >= cantidad) {
+                    total = (cantidad * precio) + total;
+                    totalPagarTextField.setText(String.valueOf(total));
+                    String data = (idProductoTextField.getText() + " - "
+                            + nombreProductoTextField.getText() + " - "
+                            + cantProductoTextField.getText() + " x "
+                            + precioUnitario.getText() + ":   "
+                            + String.valueOf(cantidad * precio));
+                    datosIngresados.addElement(data);
+                    cantidad = productos.get(i).getCantidad() - cantidad;
+                    productos.get(i).setCantidad(cantidad);
+                    resetearCasillasParcial();
+                    cantidadTotalProductos++;
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay stock sufienciente\n"
+                            + "Stock: " + productos.get(i).getCantidad());
+                }
+            }
+        }
     }//GEN-LAST:event_agregarProductoButtonMouseClicked
 
     private void idProductoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idProductoTextFieldActionPerformed
@@ -888,7 +898,7 @@ public class menuVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_idProductoTextFieldActionPerformed
 
     private void nombreClienteTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreClienteTextFieldActionPerformed
-        
+
     }//GEN-LAST:event_nombreClienteTextFieldActionPerformed
 
     private void medioPagoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medioPagoComboBoxActionPerformed
@@ -902,10 +912,10 @@ public class menuVendedor extends javax.swing.JFrame {
         double totalpagar = Double.parseDouble(totalPagarTextField.getText());
         ventas.add(new Venta(nombre, fecha, mediopago, totalpagar));
         if (totalPagarTextField.getText().isBlank()
-            || nombreClienteTextField.getText().isBlank()
-            || medioPagoComboBox.getSelectedIndex() == 0) {
+                || nombreClienteTextField.getText().isBlank()
+                || medioPagoComboBox.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Por favor llenar todos los"
-                + "campos necesarios para continuar");
+                    + "campos necesarios para continuar");
         }
         if (medioPagoComboBox.getSelectedIndex() == 1) {
             abonoTextField.setText(totalPagarTextField.getText());
@@ -919,12 +929,12 @@ public class menuVendedor extends javax.swing.JFrame {
             debeTextField.setText(String.valueOf(totalProductos - abono));
             do {
                 JOptionPane.showMessageDialog(null, "Por favor llenar todos los"
-                    + "campos necesarios para continuar");
+                        + "campos necesarios para continuar");
             } while (abonoTextField.getText().isBlank() || numeroCuotas.getText().isBlank());
         }
     }//GEN-LAST:event_realizarCompraButtonMouseClicked
-    
-     public void verInventario(){
+
+    public void verInventario(){
         int size = productos.size();
         String matriz [][] = new String[size][5];
         for(int i=0; i<size; i++){
@@ -936,8 +946,8 @@ public class menuVendedor extends javax.swing.JFrame {
         }
         jTable1.setModel(new javax.swing.table.DefaultTableModel( matriz,
         new String [] {
-            "idProducto", "nombre", "categoria", "precio", "cantidad"
-        }
+                    "idProducto", "nombre", "categoria", "precio", "cantidad"
+                }
         ));
     }
     public void verVentas(){
@@ -951,8 +961,8 @@ public class menuVendedor extends javax.swing.JFrame {
         }
         jTable2.setModel(new javax.swing.table.DefaultTableModel( matriz,
         new String [] {
-            "nombreCliente", "fechaVenta", "medioPago", "totalPagar"
-        }
+                    "nombreCliente", "fechaVenta", "medioPago", "totalPagar"
+                }
         ));
     }
 
