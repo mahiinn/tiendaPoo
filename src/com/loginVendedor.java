@@ -39,7 +39,6 @@ public class loginVendedor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
@@ -154,6 +153,11 @@ public class loginVendedor extends javax.swing.JFrame {
         passField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 passFieldMousePressed(evt);
+            }
+        });
+        passField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passFieldActionPerformed(evt);
             }
         });
         background.add(passField, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 290, 270, 40));
@@ -319,6 +323,20 @@ public class loginVendedor extends javax.swing.JFrame {
             lognUserTextField.setForeground(Color.gray);
         }
     }//GEN-LAST:event_passFieldMousePressed
+
+    private void passFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passFieldActionPerformed
+        lognUserTextField.getText();
+        char [] contraseña=passField.getPassword();
+        if(confirmarVendedor(lognUserTextField.getText(),contraseña)){
+            dispose();
+            java.awt.EventQueue.invokeLater(() -> {
+                new menuVendedor().setVisible(true);
+            });
+        }else{
+            JOptionPane.showMessageDialog(null,"Contraseña y/o user inválidos, por favor intente de nuevo");
+        }
+    }//GEN-LAST:event_passFieldActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JPanel buttonPanel;

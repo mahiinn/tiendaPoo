@@ -5,7 +5,7 @@
  */
 package com;
 
-import java.util.Date;
+import java.util.*;
 
 /**
  *
@@ -16,63 +16,83 @@ public class Factura {
     private String Cliente;
     private String Vendedor;
     private String Fecha;
-    private String Estado;
+    private boolean estadoCancelacion;
+    private boolean estadoDevuelta= false;
     private int CantProducto;
+    private Map<String,String> productosCantidad = new HashMap<>();
 
-    public Factura(int idFactura, String Cliente, String Vendedor, String Fecha, String Estado, int CantProducto) {
-        this.idFactura = idFactura;
+    public Factura(int idFactura, String Cliente, String Vendedor, String Fecha, boolean estadoCancelacion, int CantProducto,Map<String,String> productosCantidad) {
+        this.idFactura=idFactura;
         this.Cliente = Cliente;
         this.Vendedor = Vendedor;
         this.Fecha = Fecha;
-        this.Estado = Estado;
+        this.estadoCancelacion = estadoCancelacion;
         this.CantProducto = CantProducto;
-    }
-
-    public void setIdFactura(int idFactura) {
-        this.idFactura = idFactura;
-    }
-
-    public void setCliente(String Cliente) {
-        this.Cliente = Cliente;
-    }
-
-    public void setVendedor(String Vendedor) {
-        this.Vendedor = Vendedor;
-    }
-
-    public void setFecha(String Fecha) {
-        this.Fecha = Fecha;
-    }
-
-    public void setEstado(String Estado) {
-        this.Estado = Estado;
-    }
-
-    public void setCantProducto(int CantProducto) {
-        this.CantProducto = CantProducto;
+        this.productosCantidad = productosCantidad;
     }
 
     public int getIdFactura() {
         return idFactura;
     }
 
+    public void setIdFactura(int idFactura) {
+        this.idFactura = idFactura;
+    }
+
     public String getCliente() {
         return Cliente;
+    }
+
+    public void setCliente(String Cliente) {
+        this.Cliente = Cliente;
     }
 
     public String getVendedor() {
         return Vendedor;
     }
 
+    public void setVendedor(String Vendedor) {
+        this.Vendedor = Vendedor;
+    }
+
     public String getFecha() {
         return Fecha;
     }
 
-    public String getEstado() {
-        return Estado;
+    public void setFecha(String Fecha) {
+        this.Fecha = Fecha;
+    }
+
+    public boolean isEstadoCancelacion() {
+        return estadoCancelacion;
+    }
+
+    public void setEstadoCancelacion(boolean estadoCancelacion) {
+        this.estadoCancelacion = estadoCancelacion;
+    }
+
+    public boolean isEstadoDevuelta() {
+        return estadoDevuelta;
+    }
+
+    public void setEstadoDevuelta(boolean estadoDevuelta) {
+        this.estadoDevuelta = estadoDevuelta;
     }
 
     public int getCantProducto() {
         return CantProducto;
-    }    
+    }
+
+    public void setCantProducto(int CantProducto) {
+        this.CantProducto = CantProducto;
+    }
+
+    public Map<String,String> getMap() {
+        return productosCantidad;
+    }
+
+    public void setMap(Map<String,String> productosCantidad) {
+        this.productosCantidad = productosCantidad;
+    }
+    
 }
