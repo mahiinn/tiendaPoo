@@ -106,6 +106,11 @@ public class loginAdmi extends javax.swing.JFrame {
                 lognUserTextFieldMousePressed(evt);
             }
         });
+        lognUserTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lognUserTextFieldActionPerformed(evt);
+            }
+        });
         background.add(lognUserTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 210, 270, 40));
 
         lognPassLabel.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
@@ -154,6 +159,11 @@ public class loginAdmi extends javax.swing.JFrame {
         passField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 passFieldMousePressed(evt);
+            }
+        });
+        passField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passFieldActionPerformed(evt);
             }
         });
         background.add(passField, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 290, 270, 40));
@@ -310,6 +320,33 @@ public class loginAdmi extends javax.swing.JFrame {
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_headerMousePressed
+
+    private void passFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passFieldActionPerformed
+        lognUserTextField.getText();
+        char [] contraseña=passField.getPassword();
+        if(confirmarAdministrador(lognUserTextField.getText(),contraseña)){
+            dispose();
+            java.awt.EventQueue.invokeLater(() -> {
+                new menuAdmi().setVisible(true);
+            });
+        }else{
+            JOptionPane.showMessageDialog(null,"Contraseña y/o user inválidos, por favor intente de nuevo");
+        }
+    }//GEN-LAST:event_passFieldActionPerformed
+
+    private void lognUserTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lognUserTextFieldActionPerformed
+        lognUserTextField.getText();
+        char [] contraseña=passField.getPassword();
+        if(confirmarAdministrador(lognUserTextField.getText(),contraseña)){
+            dispose();
+            java.awt.EventQueue.invokeLater(() -> {
+                new menuAdmi().setVisible(true);
+            });
+        }else{
+            JOptionPane.showMessageDialog(null,"Contraseña y/o user inválidos, por favor intente de nuevo");
+        }
+    }//GEN-LAST:event_lognUserTextFieldActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JPanel buttonPanel;

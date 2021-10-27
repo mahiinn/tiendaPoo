@@ -49,21 +49,25 @@ public class menuAdmi extends javax.swing.JFrame {
         titleSeparator1 = new javax.swing.JSeparator();
         jLabel17 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        header = new javax.swing.JLabel();
         menuClose = new javax.swing.JPanel();
         closeButton = new javax.swing.JPanel();
         closeLabel = new javax.swing.JLabel();
+        header = new javax.swing.JLabel();
         differentPages = new javax.swing.JTabbedPane();
         index = new javax.swing.JPanel();
         titleIndex = new javax.swing.JLabel();
-        crearVendedor = new javax.swing.JPanel();
         llamarVendedor = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         verInventario = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         verVentas = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         verFacturas = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        crearVendedor = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -362,21 +366,6 @@ public class menuAdmi extends javax.swing.JFrame {
 
         background.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 600));
 
-        header.setBackground(new java.awt.Color(255, 255, 255));
-        header.setForeground(new java.awt.Color(255, 255, 255));
-        header.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/blanco.png"))); // NOI18N
-        header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                headerMouseDragged(evt);
-            }
-        });
-        header.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                headerMousePressed(evt);
-            }
-        });
-        background.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 40));
-
         menuClose.setBackground(new java.awt.Color(255, 255, 255));
         menuClose.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -414,6 +403,21 @@ public class menuAdmi extends javax.swing.JFrame {
 
         background.add(menuClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(866, 0, -1, -1));
 
+        header.setBackground(new java.awt.Color(255, 255, 255));
+        header.setForeground(new java.awt.Color(255, 255, 255));
+        header.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/blanco.png"))); // NOI18N
+        header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                headerMouseDragged(evt);
+            }
+        });
+        header.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                headerMousePressed(evt);
+            }
+        });
+        background.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 40));
+
         index.setBackground(new java.awt.Color(255, 255, 255));
 
         titleIndex.setFont(new java.awt.Font("Poppins Medium", 0, 32)); // NOI18N
@@ -440,32 +444,35 @@ public class menuAdmi extends javax.swing.JFrame {
 
         differentPages.addTab("tab1", index);
 
-        crearVendedor.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout crearVendedorLayout = new javax.swing.GroupLayout(crearVendedor);
-        crearVendedor.setLayout(crearVendedorLayout);
-        crearVendedorLayout.setHorizontalGroup(
-            crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
-        );
-        crearVendedorLayout.setVerticalGroup(
-            crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
-        );
-
-        differentPages.addTab("tab2", crearVendedor);
-
         llamarVendedor.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/trabajando.jpg"))); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Estamos trabajando en esta funcionalidad :)");
 
         javax.swing.GroupLayout llamarVendedorLayout = new javax.swing.GroupLayout(llamarVendedor);
         llamarVendedor.setLayout(llamarVendedorLayout);
         llamarVendedorLayout.setHorizontalGroup(
             llamarVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGroup(llamarVendedorLayout.createSequentialGroup()
+                .addContainerGap(62, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(50, 50, 50))
+            .addGroup(llamarVendedorLayout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         llamarVendedorLayout.setVerticalGroup(
             llamarVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGroup(llamarVendedorLayout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         differentPages.addTab("tab3", llamarVendedor);
@@ -515,6 +522,39 @@ public class menuAdmi extends javax.swing.JFrame {
         verFacturas.setViewportView(jTable3);
 
         differentPages.addTab("tab6", verFacturas);
+
+        crearVendedor.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/trabajando.jpg"))); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Estamos trabajando en esta funcionalidad :)");
+
+        javax.swing.GroupLayout crearVendedorLayout = new javax.swing.GroupLayout(crearVendedor);
+        crearVendedor.setLayout(crearVendedorLayout);
+        crearVendedorLayout.setHorizontalGroup(
+            crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(crearVendedorLayout.createSequentialGroup()
+                .addContainerGap(62, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(50, 50, 50))
+            .addGroup(crearVendedorLayout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        crearVendedorLayout.setVerticalGroup(
+            crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(crearVendedorLayout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(155, Short.MAX_VALUE))
+        );
+
+        differentPages.addTab("tab2", crearVendedor);
 
         background.add(differentPages, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 7, 650, 593));
 
@@ -715,8 +755,12 @@ public class menuAdmi extends javax.swing.JFrame {
     private javax.swing.JLabel factura;
     private javax.swing.JLabel header;
     private javax.swing.JPanel index;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
