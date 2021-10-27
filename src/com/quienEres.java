@@ -8,6 +8,7 @@ package com;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
+import com.app;
 
 /**
  *
@@ -16,9 +17,11 @@ import javax.swing.border.Border;
 public class quienEres extends javax.swing.JFrame {
 
     int xMouse,yMouse;
-    
+    app app = new app();
     public quienEres() {
         initComponents();
+        app.contarFacturas();
+        app.llenarFacturas();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -5,6 +5,8 @@ import java.awt.Color;
 import static java.awt.Color.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
@@ -20,7 +22,9 @@ public class menuVendedor extends javax.swing.JFrame {
     ArrayList<Venta> ventas = new ArrayList();
     //ArrayList<Factura> facturas = new ArrayList();
     DefaultListModel datosIngresados = new DefaultListModel();
+
     int cantidadTotalProductos;
+    app app = new app();
 
     public menuVendedor() {
         this.setUndecorated(true);
@@ -32,26 +36,27 @@ public class menuVendedor extends javax.swing.JFrame {
         abonoTextField.setEditable(false);
         numeroCuotas.setEditable(false);
         debeTextField.setEditable(false);
+        app.contarFacturas();
+        app.llenarFacturas();
     }
 
-    public void crearFactura(String Cliente, String Vendedor, String Fecha, String Estado, int CantProducto) throws IOException {
-        Random rd = new Random();
-        int idFactura = 0;
-        boolean continuar;
-        do {
-            idFactura = rd.nextInt(100000) + 1;
-            for (int i = 0; i < facturas.size(); i++) {
-                if (facturas.get(i).getIdFactura() != idFactura) {
-                    continuar = false;
-                }
-            }
-        } while (continuar = true);
-        facturas.add(new Factura(idFactura, Cliente, Vendedor, Fecha, Estado, CantProducto));
+//    public void crearFactura(String Cliente, String Vendedor, String Fecha, String Estado, int CantProducto) throws IOException {
+//        Random rd = new Random();
+//        int idFactura = 0;
+//        boolean continuar;
+//        do {
+//            idFactura = rd.nextInt(100000) + 1;
+//            for (int i = 0; i < facturas.size(); i++) {
+//                if (facturas.get(i).getIdFactura() != idFactura) {
+//                    continuar = false;
+//                }
+//            }
+//        } while (continuar = true);
+//        facturas.add(new Factura(idFactura, Cliente, Vendedor, Fecha, Estado, CantProducto));
 //        String texto = (String.valueOf(idFactura)) + "\n" + "Nombre del cliente:\t" + nombreProductoTextField.getText()
 //                + "Nombre Vendedor:\t" + "Vendedor1\n" + "Fecha de compra:\t" + Fecha + "\n" + "Estado de la factura:\t" + Estado
 //                + "\n" + "Cantidad de productos:\t" + String.valueOf(cantidadTotalProductos) + "\n" + "Total:\t" + totalPagarTextField.getText();
-    }
-
+//    }
     public void asignarValoresTextField() {
         fechaTextField.setEditable(false);
         fechaTextField.setText(fechaHoy());
@@ -219,16 +224,16 @@ public class menuVendedor extends javax.swing.JFrame {
         indexLayout.setHorizontalGroup(
             indexLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, indexLayout.createSequentialGroup()
-                .addContainerGap(185, Short.MAX_VALUE)
-                .addComponent(titleVendedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(185, 185, 185))
+                .addContainerGap(179, Short.MAX_VALUE)
+                .addComponent(titleVendedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(140, 140, 140))
         );
         indexLayout.setVerticalGroup(
             indexLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(indexLayout.createSequentialGroup()
-                .addGap(102, 102, 102)
+                .addGap(81, 81, 81)
                 .addComponent(titleVendedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(415, Short.MAX_VALUE))
+                .addContainerGap(443, Short.MAX_VALUE))
         );
 
         differentPages.addTab("tab5", index);
@@ -550,17 +555,6 @@ public class menuVendedor extends javax.swing.JFrame {
 
         differentPages.addTab("tab3", verVentas);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
         verFacturas.setViewportView(jTable3);
 
         differentPages.addTab("tab4", verFacturas);
@@ -752,7 +746,10 @@ public class menuVendedor extends javax.swing.JFrame {
         label.setForeground(colorLabel);
     }
     private void closeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseClicked
-        System.exit(0);
+        dispose();
+        java.awt.EventQueue.invokeLater(() -> {
+            new quienEres().setVisible(true);
+        });
     }//GEN-LAST:event_closeLabelMouseClicked
 
     private void closeLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseEntered
@@ -844,6 +841,8 @@ public class menuVendedor extends javax.swing.JFrame {
         cambiarColor(realizarVentaButton, realizarVentaLabel, BLACK, WHITE);
         cambiarColor(verInventarioButton, verInventarioLabel, BLACK, WHITE);
         cambiarColor(verVentasButton, verVentasLabel, BLACK, WHITE);
+        verFacturas();
+
     }//GEN-LAST:event_verFacturasLabelMouseClicked
 
     private void verFacturasLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verFacturasLabelMouseEntered
@@ -858,22 +857,33 @@ public class menuVendedor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_verFacturasLabelMouseExited
 
-    
+
     private void agregarProductoButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarProductoButtonMouseClicked
         int cantidad = Integer.parseInt(cantProductoTextField.getText());
         double precio = Double.parseDouble(precioUnitario.getText());
-        total = (cantidad * precio) + total;
-        totalPagarTextField.setText(String.valueOf(total));
-        String data = (idProductoTextField.getText() + " - "
-                + nombreProductoTextField.getText() + " - "
-                + cantProductoTextField.getText() + " x "
-                + precioUnitario.getText() + ":   "
-                + String.valueOf(cantidad * precio));
-        datosIngresados.addElement(data);
         int idProducto = Integer.parseInt(idProductoTextField.getText());
-        restarCantidad(cantidad, idProducto);
-        resetearCasillasParcial();
-        cantidadTotalProductos++;
+        for (int i = 0; i < productos.size(); i++) {
+            if (productos.get(i).getIdProducto() == idProducto) {
+                if (productos.get(i).getCantidad() >= cantidad) {
+                    System.out.println("Se agregaron los productos " + app.productosCantidadLlevar(idProducto, cantidad));
+                    total = (cantidad * precio) + total;
+                    totalPagarTextField.setText(String.valueOf(total));
+                    String data = (idProductoTextField.getText() + " - "
+                            + nombreProductoTextField.getText() + " - "
+                            + cantProductoTextField.getText() + " x "
+                            + precioUnitario.getText() + ":   "
+                            + String.valueOf(cantidad * precio));
+                    datosIngresados.addElement(data);
+                    cantidad = productos.get(i).getCantidad() - cantidad;
+                    productos.get(i).setCantidad(cantidad);
+                    resetearCasillasParcial();
+                    cantidadTotalProductos++;
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay stock sufienciente\n"
+                            + "Stock: " + productos.get(i).getCantidad());
+                }
+            }
+        }
     }//GEN-LAST:event_agregarProductoButtonMouseClicked
 
     private void idProductoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idProductoTextFieldActionPerformed
@@ -888,74 +898,117 @@ public class menuVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_idProductoTextFieldActionPerformed
 
     private void nombreClienteTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreClienteTextFieldActionPerformed
-        
+
     }//GEN-LAST:event_nombreClienteTextFieldActionPerformed
 
     private void medioPagoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medioPagoComboBoxActionPerformed
-        // TODO add your handling code here:
+        if (medioPagoComboBox.getSelectedIndex() == 2) {
+            numeroCuotas.setEditable(true);
+            abonoTextField.setEditable(true);
+        } else {
+            abonoTextField.setEditable(false);
+            numeroCuotas.setEditable(false);
+            debeTextField.setEditable(false);
+        }
     }//GEN-LAST:event_medioPagoComboBoxActionPerformed
 
     private void realizarCompraButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_realizarCompraButtonMouseClicked
         String nombre = nombreClienteTextField.getText();
         String fecha = fechaTextField.getText();
-        String mediopago = (String)medioPagoComboBox.getSelectedItem();
+        String mediopago = (String) medioPagoComboBox.getSelectedItem();
         double totalpagar = Double.parseDouble(totalPagarTextField.getText());
-        ventas.add(new Venta(nombre, fecha, mediopago, totalpagar));
-        if (totalPagarTextField.getText().isBlank()
-            || nombreClienteTextField.getText().isBlank()
-            || medioPagoComboBox.getSelectedIndex() == 0) {
+
+        if (!totalPagarTextField.getText().isBlank()
+            & !nombreClienteTextField.getText().isBlank()
+            & medioPagoComboBox.getSelectedIndex() != 0){
+            if (medioPagoComboBox.getSelectedIndex() == 1) {
+                abonoTextField.setText(totalPagarTextField.getText());
+                debeTextField.setText("$ 0");
+                app.realizarFactura(nombre, fecha, true, cantidadTotalProductos, totalpagar);
+                ventas.add(new Venta(nombre, fecha, mediopago, totalpagar));
+                resetearCasillasTotal();
+                datosIngresados.removeAllElements();
+            }
+            if (medioPagoComboBox.getSelectedIndex() == 2) {
+                double abono = Double.parseDouble(abonoTextField.getText());
+                debeTextField.setText(String.valueOf(totalpagar - abono));
+                if (!abonoTextField.getText().isBlank() & !numeroCuotas.getText().isBlank()) {
+                    app.realizarFactura(nombre, fecha, false, cantidadTotalProductos, totalpagar);
+                    ventas.add(new Venta(nombre, fecha, mediopago, totalpagar));
+                    resetearCasillasTotal();
+                    datosIngresados.removeAllElements();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Por favor llenar todos los"
+                            + "campos necesarios para continuar");
+                }
+            }
+        } else {
             JOptionPane.showMessageDialog(null, "Por favor llenar todos los"
-                + "campos necesarios para continuar");
-        }
-        if (medioPagoComboBox.getSelectedIndex() == 1) {
-            abonoTextField.setText(totalPagarTextField.getText());
-            debeTextField.setText("$ 0");
-        }
-        if (medioPagoComboBox.getSelectedIndex() == 2) {
-            numeroCuotas.setEditable(true);
-            abonoTextField.setEditable(true);
-            double totalProductos = Double.parseDouble(totalPagarTextField.getText());
-            double abono = Double.parseDouble(abonoTextField.getText());
-            debeTextField.setText(String.valueOf(totalProductos - abono));
-            do {
-                JOptionPane.showMessageDialog(null, "Por favor llenar todos los"
                     + "campos necesarios para continuar");
-            } while (abonoTextField.getText().isBlank() || numeroCuotas.getText().isBlank());
         }
+
     }//GEN-LAST:event_realizarCompraButtonMouseClicked
-    
-     public void verInventario(){
+
+    public void verInventario() {
         int size = productos.size();
-        String matriz [][] = new String[size][5];
-        for(int i=0; i<size; i++){
-            matriz [i][0] = String.valueOf(productos.get(i).getIdProducto());
-            matriz [i][1] = productos.get(i).getNombre();
-            matriz [i][2] = productos.get(i).getCategoria();
-            matriz [i][3] = String.valueOf(productos.get(i).getPrecio());
-            matriz [i][4] = String.valueOf(productos.get(i).getCantidad());
+        String matriz[][] = new String[size][5];
+        for (int i = 0; i < size; i++) {
+            matriz[i][0] = String.valueOf(productos.get(i).getIdProducto());
+            matriz[i][1] = productos.get(i).getNombre();
+            matriz[i][2] = productos.get(i).getCategoria();
+            matriz[i][3] = String.valueOf(productos.get(i).getPrecio());
+            matriz[i][4] = String.valueOf(productos.get(i).getCantidad());
         }
-        jTable1.setModel(new javax.swing.table.DefaultTableModel( matriz,
-        new String [] {
-            "idProducto", "nombre", "categoria", "precio", "cantidad"
-        }
-        ));
-    }
-    public void verVentas(){
-        int size = ventas.size();
-        String matriz [][] = new String[size][4];
-        for(int i=0; i<size; i++){
-            matriz [i][0] = ventas.get(i).getNombre();
-            matriz [i][1] = ventas.get(i).getFecha();
-            matriz [i][2] = ventas.get(i).getMediopago();
-            matriz [i][3] = String.valueOf(ventas.get(i).getTotalpagar());
-        }
-        jTable2.setModel(new javax.swing.table.DefaultTableModel( matriz,
-        new String [] {
-            "nombreCliente", "fechaVenta", "medioPago", "totalPagar"
-        }
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(matriz,
+                new String[]{
+                    "idProducto", "nombre", "categoria", "precio", "cantidad"
+                }
         ));
     }
 
+    public void verVentas() {
+        int size = ventas.size();
+        String matriz[][] = new String[size][4];
+        for (int i = 0; i < size; i++) {
+            matriz[i][0] = ventas.get(i).getNombre();
+            matriz[i][1] = ventas.get(i).getFecha();
+            matriz[i][2] = ventas.get(i).getMediopago();
+            matriz[i][3] = String.valueOf(ventas.get(i).getTotalpagar());
+        }
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(matriz,
+                new String[]{
+                    "nombreCliente", "fechaVenta", "medioPago", "totalPagar"
+                }
+        ));
+    }
+
+    public void verFacturas() {
+        facturas = app.verFacturas();
+        String matriz[][] = new String[facturas.size()][7];
+        for (int i = 0; i < facturas.size(); i++) {
+            String productos = "", cantidad = "";
+            matriz[i][0] = Integer.toString(facturas.get(i).getIdFactura());
+            for (int j = 0; j < facturas.get(i).getMap().size(); j++) {
+                Map<String, String> productosCantidad = new HashMap<>();
+                productosCantidad = facturas.get(i).getMap();
+                for (String k : productosCantidad.keySet()) {
+                    productos += k + "\n";
+                    cantidad += productosCantidad.get(k);
+                }
+            }
+            matriz[i][1] = productos;
+            matriz[i][2] = cantidad;
+            matriz[i][3] = facturas.get(i).getVendedor();
+            matriz[i][4] = facturas.get(i).getCliente();
+            matriz[i][5] = Integer.toString(facturas.get(i).getCantProducto());
+            matriz[i][6] = facturas.get(i).getFecha();
+        }
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(matriz,
+                new String[]{
+                    "id Factura", "Producto llevados", "Cantidad", "Vendedor", "Cliente", "Cantidad total de productos", "Fecha de la venta"
+                }
+        ));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField abonoTextField;
