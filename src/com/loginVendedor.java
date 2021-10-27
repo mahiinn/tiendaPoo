@@ -245,7 +245,16 @@ public class loginVendedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lognUserTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lognUserTextFieldActionPerformed
-        // TODO add your handling code here:
+        lognUserTextField.getText();
+        char [] contraseña=passField.getPassword();
+        if(confirmarVendedor(lognUserTextField.getText(),contraseña)){
+            dispose();
+            java.awt.EventQueue.invokeLater(() -> {
+                new menuVendedor().setVisible(true);
+            });
+        }else{
+            JOptionPane.showMessageDialog(null,"Contraseña y/o user inválidos, por favor intente de nuevo");
+        }
     }//GEN-LAST:event_lognUserTextFieldActionPerformed
 
     private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
