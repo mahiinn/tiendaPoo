@@ -1,15 +1,25 @@
 package com;
+
+import com.menuVendedor;
 import java.awt.Color;
 import static java.awt.Color.*;
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class menuAdmi extends javax.swing.JFrame {
-    int xMouse,yMouse;
-    
+
+    int xMouse, yMouse;
+    ArrayList<Producto> productos = new ArrayList();
+    ArrayList<Venta> ventas = new ArrayList();
+    menuVendedor tablas = new menuVendedor();
+
     public menuAdmi() {
         initComponents();
+        productos = tablas.productos;
+        ventas = tablas.ventas;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -24,7 +34,7 @@ public class menuAdmi extends javax.swing.JFrame {
         crearVendedorButton = new javax.swing.JPanel();
         crearVendedorLabel = new javax.swing.JLabel();
         boligrafo = new javax.swing.JLabel();
-        llamarVendedorButton = new javax.swing.JPanel();
+        llamarProveedorButton = new javax.swing.JPanel();
         llamarProveedorLabel = new javax.swing.JLabel();
         telefono = new javax.swing.JLabel();
         verInventarioButton = new javax.swing.JPanel();
@@ -43,7 +53,7 @@ public class menuAdmi extends javax.swing.JFrame {
         menuClose = new javax.swing.JPanel();
         closeButton = new javax.swing.JPanel();
         closeLabel = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        differentPages = new javax.swing.JTabbedPane();
         index = new javax.swing.JPanel();
         titleIndex = new javax.swing.JLabel();
         crearVendedor = new javax.swing.JPanel();
@@ -92,17 +102,6 @@ public class menuAdmi extends javax.swing.JFrame {
         boligrafo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boligrafo.png"))); // NOI18N
         boligrafo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         boligrafo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        boligrafo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                boligrafoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                boligrafoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                boligrafoMouseExited(evt);
-            }
-        });
 
         javax.swing.GroupLayout crearVendedorButtonLayout = new javax.swing.GroupLayout(crearVendedorButton);
         crearVendedorButton.setLayout(crearVendedorButtonLayout);
@@ -124,7 +123,7 @@ public class menuAdmi extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        llamarVendedorButton.setBackground(new java.awt.Color(0, 0, 0));
+        llamarProveedorButton.setBackground(new java.awt.Color(0, 0, 0));
 
         llamarProveedorLabel.setFont(new java.awt.Font("Poppins", 1, 13)); // NOI18N
         llamarProveedorLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -151,33 +150,22 @@ public class menuAdmi extends javax.swing.JFrame {
         telefono.setToolTipText("");
         telefono.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         telefono.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        telefono.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                telefonoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                telefonoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                telefonoMouseExited(evt);
-            }
-        });
 
-        javax.swing.GroupLayout llamarVendedorButtonLayout = new javax.swing.GroupLayout(llamarVendedorButton);
-        llamarVendedorButton.setLayout(llamarVendedorButtonLayout);
-        llamarVendedorButtonLayout.setHorizontalGroup(
-            llamarVendedorButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(llamarVendedorButtonLayout.createSequentialGroup()
+        javax.swing.GroupLayout llamarProveedorButtonLayout = new javax.swing.GroupLayout(llamarProveedorButton);
+        llamarProveedorButton.setLayout(llamarProveedorButtonLayout);
+        llamarProveedorButtonLayout.setHorizontalGroup(
+            llamarProveedorButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(llamarProveedorButtonLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(llamarProveedorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        llamarVendedorButtonLayout.setVerticalGroup(
-            llamarVendedorButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        llamarProveedorButtonLayout.setVerticalGroup(
+            llamarProveedorButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(llamarProveedorLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(llamarVendedorButtonLayout.createSequentialGroup()
+            .addGroup(llamarProveedorButtonLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(telefono)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -209,17 +197,6 @@ public class menuAdmi extends javax.swing.JFrame {
         cajaPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/caja-del-paquete.png"))); // NOI18N
         cajaPaquete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cajaPaquete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        cajaPaquete.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cajaPaqueteMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cajaPaqueteMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cajaPaqueteMouseExited(evt);
-            }
-        });
 
         javax.swing.GroupLayout verInventarioButtonLayout = new javax.swing.GroupLayout(verInventarioButton);
         verInventarioButton.setLayout(verInventarioButtonLayout);
@@ -267,17 +244,6 @@ public class menuAdmi extends javax.swing.JFrame {
         bolsaCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bolsa-de-la-compra.png"))); // NOI18N
         bolsaCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bolsaCompra.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        bolsaCompra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bolsaCompraMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                bolsaCompraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                bolsaCompraMouseExited(evt);
-            }
-        });
 
         javax.swing.GroupLayout verVentasButtonLayout = new javax.swing.GroupLayout(verVentasButton);
         verVentasButton.setLayout(verVentasButtonLayout);
@@ -325,17 +291,6 @@ public class menuAdmi extends javax.swing.JFrame {
         factura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/factura.png"))); // NOI18N
         factura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         factura.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        factura.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                facturaMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                facturaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                facturaMouseExited(evt);
-            }
-        });
 
         javax.swing.GroupLayout verFacturasButtonLayout = new javax.swing.GroupLayout(verFacturasButton);
         verFacturasButton.setLayout(verFacturasButtonLayout);
@@ -378,7 +333,7 @@ public class menuAdmi extends javax.swing.JFrame {
             .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(crearVendedorButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(llamarVendedorButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(llamarProveedorButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(verInventarioButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(verVentasButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(verFacturasButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -395,7 +350,7 @@ public class menuAdmi extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addComponent(crearVendedorButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(llamarVendedorButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(llamarProveedorButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(verInventarioButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -483,7 +438,9 @@ public class menuAdmi extends javax.swing.JFrame {
                 .addContainerGap(461, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab1", index);
+        differentPages.addTab("tab1", index);
+
+        crearVendedor.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout crearVendedorLayout = new javax.swing.GroupLayout(crearVendedor);
         crearVendedor.setLayout(crearVendedorLayout);
@@ -496,7 +453,9 @@ public class menuAdmi extends javax.swing.JFrame {
             .addGap(0, 560, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab2", crearVendedor);
+        differentPages.addTab("tab2", crearVendedor);
+
+        llamarVendedor.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout llamarVendedorLayout = new javax.swing.GroupLayout(llamarVendedor);
         llamarVendedor.setLayout(llamarVendedorLayout);
@@ -509,22 +468,23 @@ public class menuAdmi extends javax.swing.JFrame {
             .addGap(0, 560, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab3", llamarVendedor);
+        differentPages.addTab("tab3", llamarVendedor);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        jTable1.getTableHeader().setReorderingAllowed(false);
         verInventario.setViewportView(jTable1);
 
-        jTabbedPane1.addTab("tab4", verInventario);
+        differentPages.addTab("tab4", verInventario);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -539,7 +499,7 @@ public class menuAdmi extends javax.swing.JFrame {
         ));
         verVentas.setViewportView(jTable2);
 
-        jTabbedPane1.addTab("tab5", verVentas);
+        differentPages.addTab("tab5", verVentas);
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -554,9 +514,9 @@ public class menuAdmi extends javax.swing.JFrame {
         ));
         verFacturas.setViewportView(jTable3);
 
-        jTabbedPane1.addTab("tab6", verFacturas);
+        differentPages.addTab("tab6", verFacturas);
 
-        background.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 7, 650, 593));
+        background.add(differentPages, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 7, 650, 593));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -576,134 +536,111 @@ public class menuAdmi extends javax.swing.JFrame {
         label.setForeground(colorLabel);
     }
     private void crearVendedorLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearVendedorLabelMouseClicked
-        // TODO add your handling code here:
+        differentPages.setSelectedIndex(1);
+        cambiarColor(crearVendedorButton, crearVendedorLabel, new Color(153, 153, 153), WHITE);
+        cambiarColor(llamarProveedorButton, llamarProveedorLabel, BLACK, WHITE);
+        cambiarColor(verInventarioButton, verInventarioLabel, BLACK, WHITE);
+        cambiarColor(verVentasButton, verVentasLabel, BLACK, WHITE);
+        cambiarColor(verFacturasButton, verFacturasLabel, BLACK, WHITE);
     }//GEN-LAST:event_crearVendedorLabelMouseClicked
 
     private void crearVendedorLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearVendedorLabelMouseEntered
-        crearVendedorButton.setBackground(new Color(106,105,105));
-        crearVendedorLabel.setForeground(Color.BLACK);
+        cambiarColor(crearVendedorButton, crearVendedorLabel, new Color(106, 105, 105), BLACK);
     }//GEN-LAST:event_crearVendedorLabelMouseEntered
 
     private void crearVendedorLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearVendedorLabelMouseExited
-        crearVendedorButton.setBackground(Color.BLACK);
-        crearVendedorLabel.setForeground(Color.white);
+        if (differentPages.getSelectedIndex() == 1) {
+            cambiarColor(crearVendedorButton, crearVendedorLabel, new Color(153, 153, 153), WHITE);
+        } else {
+            cambiarColor(crearVendedorButton, crearVendedorLabel, BLACK, WHITE);
+        }
     }//GEN-LAST:event_crearVendedorLabelMouseExited
 
-    private void boligrafoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boligrafoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boligrafoMouseClicked
-
-    private void boligrafoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boligrafoMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boligrafoMouseEntered
-
-    private void boligrafoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boligrafoMouseExited
-        
-    }//GEN-LAST:event_boligrafoMouseExited
-
     private void llamarProveedorLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_llamarProveedorLabelMouseClicked
-        // TODO add your handling code here:
+        differentPages.setSelectedIndex(2);
+        cambiarColor(llamarProveedorButton, llamarProveedorLabel, new Color(153, 153, 153), WHITE);
+        cambiarColor(crearVendedorButton, crearVendedorLabel, BLACK, WHITE);
+        cambiarColor(verInventarioButton, verInventarioLabel, BLACK, WHITE);
+        cambiarColor(verVentasButton, verVentasLabel, BLACK, WHITE);
+        cambiarColor(verFacturasButton, verFacturasLabel, BLACK, WHITE);
     }//GEN-LAST:event_llamarProveedorLabelMouseClicked
 
     private void llamarProveedorLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_llamarProveedorLabelMouseEntered
-        llamarVendedorButton.setBackground(new Color(106,105,105));
-        llamarProveedorLabel.setForeground(Color.BLACK);
+        cambiarColor(llamarProveedorButton, llamarProveedorLabel, new Color(106, 105, 105), BLACK);
     }//GEN-LAST:event_llamarProveedorLabelMouseEntered
 
     private void llamarProveedorLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_llamarProveedorLabelMouseExited
-        llamarVendedorButton.setBackground(Color.BLACK);
-        llamarProveedorLabel.setForeground(Color.white);
+        if (differentPages.getSelectedIndex() == 1) {
+            cambiarColor(llamarProveedorButton, llamarProveedorLabel, new Color(153, 153, 153), WHITE);
+        } else {
+            cambiarColor(llamarProveedorButton, llamarProveedorLabel, BLACK, WHITE);
+        }
     }//GEN-LAST:event_llamarProveedorLabelMouseExited
 
-    private void telefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telefonoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_telefonoMouseClicked
-
-    private void telefonoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telefonoMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_telefonoMouseEntered
-
-    private void telefonoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telefonoMouseExited
-        
-    }//GEN-LAST:event_telefonoMouseExited
-
     private void verInventarioLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verInventarioLabelMouseClicked
-        // TODO add your handling code here:
+        differentPages.setSelectedIndex(3);
+        cambiarColor(verInventarioButton, verInventarioLabel, new Color(153, 153, 153), WHITE);
+        cambiarColor(crearVendedorButton, crearVendedorLabel, BLACK, WHITE);
+        cambiarColor(llamarProveedorButton, llamarProveedorLabel, BLACK, WHITE);
+        cambiarColor(verVentasButton, verVentasLabel, BLACK, WHITE);
+        cambiarColor(verFacturasButton, verFacturasLabel, BLACK, WHITE);
+        verInventario();
     }//GEN-LAST:event_verInventarioLabelMouseClicked
-
+    
     private void verInventarioLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verInventarioLabelMouseEntered
-        verInventarioButton.setBackground(new Color(106,105,105));
-        verInventarioLabel.setForeground(Color.BLACK);
+        cambiarColor(verInventarioButton, verInventarioLabel, new Color(106, 105, 105), BLACK);
     }//GEN-LAST:event_verInventarioLabelMouseEntered
 
     private void verInventarioLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verInventarioLabelMouseExited
-        verInventarioButton.setBackground(Color.BLACK);
-        verInventarioLabel.setForeground(Color.white);
+        if (differentPages.getSelectedIndex() == 1) {
+            cambiarColor(verInventarioButton, verInventarioLabel, new Color(153, 153, 153), WHITE);
+        } else {
+            cambiarColor(verInventarioButton, verInventarioLabel, BLACK, WHITE);
+        }
     }//GEN-LAST:event_verInventarioLabelMouseExited
 
-    private void cajaPaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cajaPaqueteMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cajaPaqueteMouseClicked
-
-    private void cajaPaqueteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cajaPaqueteMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cajaPaqueteMouseEntered
-
-    private void cajaPaqueteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cajaPaqueteMouseExited
-        
-    }//GEN-LAST:event_cajaPaqueteMouseExited
-
     private void verVentasLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verVentasLabelMouseClicked
-        // TODO add your handling code here:
+        differentPages.setSelectedIndex(4);
+        cambiarColor(verVentasButton, verVentasLabel, new Color(153, 153, 153), WHITE);
+        cambiarColor(crearVendedorButton, crearVendedorLabel, BLACK, WHITE);
+        cambiarColor(llamarProveedorButton, llamarProveedorLabel, BLACK, WHITE);
+        cambiarColor(verInventarioButton, verInventarioLabel, BLACK, WHITE);
+        cambiarColor(verFacturasButton, verFacturasLabel, BLACK, WHITE);
+        verVentas();
     }//GEN-LAST:event_verVentasLabelMouseClicked
 
     private void verVentasLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verVentasLabelMouseEntered
-        verVentasButton.setBackground(new Color(106,105,105));
-        verVentasLabel.setForeground(Color.BLACK);
+        cambiarColor(verVentasButton, verVentasLabel, new Color(106, 105, 105), BLACK);
     }//GEN-LAST:event_verVentasLabelMouseEntered
 
     private void verVentasLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verVentasLabelMouseExited
-        verVentasButton.setBackground(Color.BLACK);
-        verVentasLabel.setForeground(Color.white);
+        if (differentPages.getSelectedIndex() == 1) {
+            cambiarColor(verVentasButton, verVentasLabel, new Color(153, 153, 153), WHITE);
+        } else {
+            cambiarColor(verVentasButton, verVentasLabel, BLACK, WHITE);
+        }
     }//GEN-LAST:event_verVentasLabelMouseExited
 
-    private void bolsaCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bolsaCompraMouseClicked
-        
-    }//GEN-LAST:event_bolsaCompraMouseClicked
-
-    private void bolsaCompraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bolsaCompraMouseEntered
-        
-    }//GEN-LAST:event_bolsaCompraMouseEntered
-
-    private void bolsaCompraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bolsaCompraMouseExited
-        
-    }//GEN-LAST:event_bolsaCompraMouseExited
-
     private void verFacturasLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verFacturasLabelMouseClicked
-        // TODO add your handling code here:
+        differentPages.setSelectedIndex(5);
+        cambiarColor(verFacturasButton, verFacturasLabel, new Color(153, 153, 153), WHITE);
+        cambiarColor(crearVendedorButton, crearVendedorLabel, BLACK, WHITE);
+        cambiarColor(llamarProveedorButton, llamarProveedorLabel, BLACK, WHITE);
+        cambiarColor(verInventarioButton, verInventarioLabel, BLACK, WHITE);
+        cambiarColor(verVentasButton, verVentasLabel, BLACK, WHITE);
     }//GEN-LAST:event_verFacturasLabelMouseClicked
 
     private void verFacturasLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verFacturasLabelMouseEntered
-        verFacturasButton.setBackground(new Color(106,105,105));
-        verFacturasLabel.setForeground(Color.BLACK);
+        cambiarColor(verFacturasButton, verFacturasLabel, new Color(106, 105, 105), BLACK);
     }//GEN-LAST:event_verFacturasLabelMouseEntered
 
     private void verFacturasLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verFacturasLabelMouseExited
-        verFacturasButton.setBackground(Color.BLACK);
-        verFacturasLabel.setForeground(Color.white);
+        if (differentPages.getSelectedIndex() == 1) {
+            cambiarColor(verFacturasButton, verFacturasLabel, new Color(153, 153, 153), WHITE);
+        } else {
+            cambiarColor(verFacturasButton, verFacturasLabel, BLACK, WHITE);
+        }
     }//GEN-LAST:event_verFacturasLabelMouseExited
-
-    private void facturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_facturaMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_facturaMouseClicked
-
-    private void facturaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_facturaMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_facturaMouseEntered
-
-    private void facturaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_facturaMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_facturaMouseExited
 
     private void headerMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMouseDragged
         int x = evt.getXOnScreen();
@@ -716,6 +653,14 @@ public class menuAdmi extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_headerMousePressed
 
+    private void closeLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseExited
+        cambiarColor(closeButton, closeLabel, WHITE, BLACK);
+    }//GEN-LAST:event_closeLabelMouseExited
+
+    private void closeLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseEntered
+        cambiarColor(closeButton, closeLabel, RED, WHITE);
+    }//GEN-LAST:event_closeLabelMouseEntered
+
     private void closeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseClicked
         dispose();
         java.awt.EventQueue.invokeLater(() -> {
@@ -723,14 +668,39 @@ public class menuAdmi extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_closeLabelMouseClicked
 
-    private void closeLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseEntered
-        cambiarColor(closeButton, closeLabel, RED, WHITE);
-    }//GEN-LAST:event_closeLabelMouseEntered
-
-    private void closeLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseExited
-        cambiarColor(closeButton, closeLabel, WHITE, BLACK);
-    }//GEN-LAST:event_closeLabelMouseExited
-
+    public void verInventario(){
+        int size = productos.size();
+        String matriz [][] = new String[size][5];
+        for(int i=0; i<size; i++){
+            matriz [i][0] = String.valueOf(productos.get(i).getIdProducto());
+            matriz [i][1] = productos.get(i).getNombre();
+            matriz [i][2] = productos.get(i).getCategoria();
+            matriz [i][3] = String.valueOf(productos.get(i).getPrecio());
+            matriz [i][4] = String.valueOf(productos.get(i).getCantidad());
+        }
+        jTable1.setModel(new javax.swing.table.DefaultTableModel( matriz,
+        new String [] {
+                    "idProducto", "nombre", "categoria", "precio", "cantidad"
+                }
+        ));
+    }
+    
+    public void verVentas(){
+        int size = ventas.size();
+        String matriz [][] = new String[size][4];
+        for(int i=0; i<size; i++){
+            matriz [i][0] = ventas.get(i).getNombre();
+            matriz [i][1] = ventas.get(i).getFecha();
+            matriz [i][2] = ventas.get(i).getMediopago();
+            matriz [i][3] = String.valueOf(ventas.get(i).getTotalpagar());
+        }
+        jTable2.setModel(new javax.swing.table.DefaultTableModel( matriz,
+        new String [] {
+                    "nombreCliente", "fechaVenta", "medioPago", "totalPagar"
+                }
+        ));
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JLabel boligrafo;
@@ -741,18 +711,18 @@ public class menuAdmi extends javax.swing.JFrame {
     private javax.swing.JPanel crearVendedor;
     private javax.swing.JPanel crearVendedorButton;
     private javax.swing.JLabel crearVendedorLabel;
+    private javax.swing.JTabbedPane differentPages;
     private javax.swing.JLabel factura;
     private javax.swing.JLabel header;
     private javax.swing.JPanel index;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JPanel llamarProveedorButton;
     private javax.swing.JLabel llamarProveedorLabel;
     private javax.swing.JPanel llamarVendedor;
-    private javax.swing.JPanel llamarVendedorButton;
     private javax.swing.JPanel menu;
     private javax.swing.JPanel menuClose;
     private javax.swing.JLabel telefono;
