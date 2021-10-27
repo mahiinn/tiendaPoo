@@ -119,7 +119,7 @@ public class app {
         try {
             String name="factura"+Integer.toString(idFactura)+".txt";
             //cambiar la parte de la ruta de D:\\Documentos\\NetBeansProjects a donde quiera guardar las diferentes facturas.
-            String ruta = "D:\\Documentos\\NetBeansProjects\\tiendaPoo\\src\\facturas\\"+name;
+            String ruta = "C:\\Users\\devin\\Desktop\\tiendaPoo\\src\\facturas\\"+name;
             String contenido = "-------------------"+Integer.toString(idFactura)+"-------------------\n"+
                                "-------------------"+Fecha+"-------------------\n"
                                 +listaProductos+"Nombre del vendedor: Patricio\n"+Cliente+"\n"+Integer.toString(CantProducto)+"\n"
@@ -139,13 +139,13 @@ public class app {
         productosCantidad.clear();
     }
     public ArrayList <String[]> contarFacturas(){
-        File ruta = new File("D:\\Documentos\\NetBeansProjects\\tiendaPoo\\src\\facturas");
+        File ruta = new File("C:\\Users\\devin\\Desktop\\tiendaPoo\\src\\facturas\\");
         String [] variasFacturas = ruta.list();
         ArrayList <String[]> almacenFacturas = new ArrayList <>();
         for (int i = 0; i < variasFacturas.length; i++) {
             String texto="";
             try{
-                BufferedReader buffer = new BufferedReader(new FileReader("D:\\Documentos\\NetBeansProjects\\tiendaPoo\\src\\facturas\\"+variasFacturas[i]));
+                BufferedReader buffer = new BufferedReader(new FileReader("C:\\Users\\devin\\Desktop\\tiendaPoo\\src\\facturas\\"+variasFacturas[i]));
                 String temp="";
                 String bfRead;
                 while ((bfRead=buffer.readLine())!=null){
