@@ -16,7 +16,6 @@ public class menuAdmi extends javax.swing.JFrame {
 
     public menuAdmi() {
         initComponents();
-        productos = tablas.productos;
         ventas = tablas.ventas;
     }
 
@@ -624,6 +623,7 @@ public class menuAdmi extends javax.swing.JFrame {
         cambiarColor(llamarProveedorButton, llamarProveedorLabel, BLACK, WHITE);
         cambiarColor(verVentasButton, verVentasLabel, BLACK, WHITE);
         cambiarColor(verFacturasButton, verFacturasLabel, BLACK, WHITE);
+        productos = tablas.productos;
         verInventario();
     }//GEN-LAST:event_verInventarioLabelMouseClicked
     
