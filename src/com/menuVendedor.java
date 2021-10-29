@@ -20,8 +20,8 @@ public class menuVendedor extends javax.swing.JFrame {
     double total = 0;
     ArrayList<Producto> productos = new ArrayList();
     ArrayList<Venta> ventas = new ArrayList();
-    //ArrayList<Factura> facturas = new ArrayList();
     DefaultListModel datosIngresados = new DefaultListModel();
+    Map<String,String> pCantidad = new HashMap<>();
 
     int cantidadTotalProductos;
     app app = new app();
@@ -36,8 +36,8 @@ public class menuVendedor extends javax.swing.JFrame {
         abonoTextField.setEditable(false);
         numeroCuotas.setEditable(false);
         debeTextField.setEditable(false);
-        app.contarFacturas();
-        app.llenarFacturas();
+//        app.contarFacturas();
+//        app.llenarFacturas();
     }
 
 //    public void crearFactura(String Cliente, String Vendedor, String Fecha, String Estado, int CantProducto) throws IOException {
@@ -130,6 +130,7 @@ public class menuVendedor extends javax.swing.JFrame {
         listaProductosLLevarList = new javax.swing.JList<>();
         jLabel15 = new javax.swing.JLabel();
         numeroCuotas = new javax.swing.JTextField();
+        limpiar = new javax.swing.JButton();
         verInventario = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         verVentas = new javax.swing.JScrollPane();
@@ -305,6 +306,11 @@ public class menuVendedor extends javax.swing.JFrame {
         cantProductoTextField.setBackground(new java.awt.Color(255, 255, 255));
         cantProductoTextField.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         cantProductoTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cantProductoTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantProductoTextFieldActionPerformed(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
@@ -431,6 +437,13 @@ public class menuVendedor extends javax.swing.JFrame {
         numeroCuotas.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         numeroCuotas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        limpiar.setText("Limpiar");
+        limpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                limpiarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout realizarVentaLayout = new javax.swing.GroupLayout(realizarVenta);
         realizarVenta.setLayout(realizarVentaLayout);
         realizarVentaLayout.setHorizontalGroup(
@@ -444,7 +457,7 @@ public class menuVendedor extends javax.swing.JFrame {
                                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                                 .addGap(139, 139, 139))
                             .addGroup(realizarVentaLayout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                                 .addGap(202, 202, 202))
                             .addGroup(realizarVentaLayout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -475,8 +488,11 @@ public class menuVendedor extends javax.swing.JFrame {
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(debeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(realizarCompraButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(realizarVentaLayout.createSequentialGroup()
+                                .addComponent(realizarCompraButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14))))
         );
@@ -517,8 +533,10 @@ public class menuVendedor extends javax.swing.JFrame {
                             .addComponent(jLabel14)
                             .addComponent(debeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(realizarCompraButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 117, Short.MAX_VALUE))
+                        .addGroup(realizarVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(realizarCompraButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 101, Short.MAX_VALUE))
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
@@ -865,7 +883,7 @@ public class menuVendedor extends javax.swing.JFrame {
         for (int i = 0; i < productos.size(); i++) {
             if (productos.get(i).getIdProducto() == idProducto) {
                 if (productos.get(i).getCantidad() >= cantidad) {
-                    System.out.println("Se agregaron los productos " + app.productosCantidadLlevar(idProducto, cantidad));
+                    pCantidad.put(String.valueOf(idProducto),String.valueOf(cantidad));
                     total = (cantidad * precio) + total;
                     totalPagarTextField.setText(String.valueOf(total));
                     String data = (idProductoTextField.getText() + " - "
@@ -902,7 +920,13 @@ public class menuVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreClienteTextFieldActionPerformed
 
     private void medioPagoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medioPagoComboBoxActionPerformed
-        if (medioPagoComboBox.getSelectedIndex() == 2) {
+        if (medioPagoComboBox.getSelectedIndex() == 1) {
+            abonoTextField.setText(totalPagarTextField.getText());
+            debeTextField.setText("$ 0");
+            abonoTextField.setEditable(false);
+            numeroCuotas.setEditable(false);
+            debeTextField.setEditable(false);
+        } else if (medioPagoComboBox.getSelectedIndex() == 2) {
             numeroCuotas.setEditable(true);
             abonoTextField.setEditable(true);
         } else {
@@ -911,7 +935,6 @@ public class menuVendedor extends javax.swing.JFrame {
             debeTextField.setEditable(false);
         }
     }//GEN-LAST:event_medioPagoComboBoxActionPerformed
-
     private void realizarCompraButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_realizarCompraButtonMouseClicked
         String nombre = nombreClienteTextField.getText();
         String fecha = fechaTextField.getText();
@@ -919,35 +942,70 @@ public class menuVendedor extends javax.swing.JFrame {
         double totalpagar = Double.parseDouble(totalPagarTextField.getText());
 
         if (!totalPagarTextField.getText().isBlank()
-            & !nombreClienteTextField.getText().isBlank()
-            & medioPagoComboBox.getSelectedIndex() != 0){
+                & !nombreClienteTextField.getText().isBlank()
+                & medioPagoComboBox.getSelectedIndex() != 0) {
             if (medioPagoComboBox.getSelectedIndex() == 1) {
-                abonoTextField.setText(totalPagarTextField.getText());
-                debeTextField.setText("$ 0");
-                app.realizarFactura(nombre, fecha, true, cantidadTotalProductos, totalpagar);
+                facturas.add(app.realizarVenta(nombre, fecha, false, cantidadTotalProductos, totalpagar,pCantidad));
                 ventas.add(new Venta(nombre, fecha, mediopago, totalpagar));
                 resetearCasillasTotal();
                 datosIngresados.removeAllElements();
+                pCantidad.clear();
+                
             }
             if (medioPagoComboBox.getSelectedIndex() == 2) {
                 double abono = Double.parseDouble(abonoTextField.getText());
                 debeTextField.setText(String.valueOf(totalpagar - abono));
-                if (!abonoTextField.getText().isBlank() & !numeroCuotas.getText().isBlank()) {
-                    app.realizarFactura(nombre, fecha, false, cantidadTotalProductos, totalpagar);
+                if (abonoTextField.getText().isBlank() & !numeroCuotas.getText().isBlank()) {
+                    facturas.add(app.realizarVenta(nombre, fecha, false, cantidadTotalProductos, totalpagar,pCantidad));
                     ventas.add(new Venta(nombre, fecha, mediopago, totalpagar));
                     resetearCasillasTotal();
                     datosIngresados.removeAllElements();
+                    pCantidad.clear();
                 } else {
                     JOptionPane.showMessageDialog(null, "Por favor llenar todos los"
                             + "campos necesarios para continuar");
                 }
             }
-        } else {
+        
+        } 
+        else {
             JOptionPane.showMessageDialog(null, "Por favor llenar todos los"
                     + "campos necesarios para continuar");
         }
-
+        
     }//GEN-LAST:event_realizarCompraButtonMouseClicked
+
+    private void cantProductoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantProductoTextFieldActionPerformed
+        int cantidad = Integer.parseInt(cantProductoTextField.getText());
+        double precio = Double.parseDouble(precioUnitario.getText());
+        int idProducto = Integer.parseInt(idProductoTextField.getText());
+        for (int i = 0; i < productos.size(); i++) {
+            if (productos.get(i).getIdProducto() == idProducto) {
+                if (productos.get(i).getCantidad() >= cantidad) {
+                    pCantidad.put(String.valueOf(idProducto),String.valueOf(cantidad));
+                    total = (cantidad * precio) + total;
+                    totalPagarTextField.setText(String.valueOf(total));
+                    String data = (idProductoTextField.getText() + " - "
+                            + nombreProductoTextField.getText() + " - "
+                            + cantProductoTextField.getText() + " x "
+                            + precioUnitario.getText() + ":   "
+                            + String.valueOf(cantidad * precio));
+                    datosIngresados.addElement(data);
+                    cantidad = productos.get(i).getCantidad() - cantidad;
+                    productos.get(i).setCantidad(cantidad);
+                    resetearCasillasParcial();
+                    cantidadTotalProductos++;
+                } else {
+                    JOptionPane.showMessageDialog(null, "No hay stock sufienciente\n"
+                            + "Stock: " + productos.get(i).getCantidad());
+                }
+            }
+        }
+    }//GEN-LAST:event_cantProductoTextFieldActionPerformed
+
+    private void limpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarMouseClicked
+        app.limpiar();
+    }//GEN-LAST:event_limpiarMouseClicked
 
     public void verInventario() {
         int size = productos.size();
@@ -983,33 +1041,71 @@ public class menuVendedor extends javax.swing.JFrame {
     }
 
     public void verFacturas() {
-        facturas = app.verFacturas();
-        String matriz[][] = new String[facturas.size()][7];
-        for (int i = 0; i < facturas.size(); i++) {
-            String productos = "", cantidad = "";
-            matriz[i][0] = Integer.toString(facturas.get(i).getIdFactura());
-            for (int j = 0; j < facturas.get(i).getMap().size(); j++) {
-                Map<String, String> productosCantidad = new HashMap<>();
-                productosCantidad = facturas.get(i).getMap();
-                for (String k : productosCantidad.keySet()) {
-                    productos += k + "\n";
-                    cantidad += productosCantidad.get(k);
-                }
-            }
-            matriz[i][1] = productos;
-            matriz[i][2] = cantidad;
-            matriz[i][3] = facturas.get(i).getVendedor();
-            matriz[i][4] = facturas.get(i).getCliente();
-            matriz[i][5] = Integer.toString(facturas.get(i).getCantProducto());
-            matriz[i][6] = facturas.get(i).getFecha();
+        int i=0,contador=0,k=0;
+        
+        for (int j = 0; j < facturas.size(); j++) {
+                contador+=facturas.get(j).getMap().size();
         }
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(matriz,
-                new String[]{
-                    "id Factura", "Producto llevados", "Cantidad", "Vendedor", "Cliente", "Cantidad total de productos", "Fecha de la venta"
+        String matriz[][] = new String[contador][8];
+        
+        while(facturas.size()>i){
+            
+            for (Map.Entry<String, String> entry : facturas.get(i).getMap().entrySet()) {
+                matriz[k][0] = Integer.toString(facturas.get(i).getIdFactura());
+                matriz[k][1] = entry.getKey();
+                int idProducto = Integer.parseInt(entry.getKey());
+                int size = productos.size();
+                for (int j = 0; j < size; j++) {
+                    if (productos.get(j).getIdProducto() == idProducto) {
+                        matriz[k][2]=productos.get(j).getNombre();
+                    }
                 }
-        ));
-    }
-
+                matriz[k][3] = entry.getValue();
+                matriz[k][4] = facturas.get(i).getVendedor();
+                matriz[k][5] = facturas.get(i).getCliente();
+                matriz[k][6] = Integer.toString(facturas.get(i).getCantProducto());
+                matriz[k][7] = facturas.get(i).getFecha();
+                k++;
+            }
+            i++;
+        }
+//            if(productosCantidad.size()>2){
+//                for (Map.Entry<String, String> entry : productosCantidad.entrySet()) {
+//                producto +=entry.getKey();
+//                int idProducto = Integer.parseInt(entry.getKey());
+//                int size = productos.size();
+//                for (int j = 0; j < size; j++) {
+//                    if (productos.get(j).getIdProducto() == idProducto) {
+//                        nombreProducto+="\n"+productos.get(j).getNombre()+"\n";
+//                    }
+//                }
+//                }
+//            }
+//            for (Map.Entry<String, String> entry : productosCantidad.entrySet()) {
+//                producto +="\n"+entry.getKey() + "\n";
+//                int idProducto = Integer.parseInt(entry.getKey());
+//                int size = productos.size();
+//                for (int j = 0; j < size; j++) {
+//                    if (productos.get(j).getIdProducto() == idProducto) {
+//                        nombreProducto+="\n"+productos.get(j).getNombre()+"\n";
+//                    }
+//                }
+//                cantidad += "\n"+entry.getValue()+"\n";
+//                matriz[i][1] = producto;
+//                matriz[i][2] = nombreProducto;
+//                matriz[i][3] = cantidad;
+//                matriz[i][4] = facturas.get(i).getVendedor();
+//                matriz[i][5] = facturas.get(i).getCliente();
+//                matriz[i][6] = Integer.toString(facturas.get(i).getCantProducto());
+//                matriz[i][7] = facturas.get(i).getFecha();
+//            }
+            jTable3.setModel(new javax.swing.table.DefaultTableModel(matriz,
+                    new String[]{
+                        "id Factura", "IdProducto", "Nombre Producto", "Cantidad", "Vendedor", "Cliente", "Cantidad total de productos", "Fecha de la venta"
+                    }
+            ));
+        }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField abonoTextField;
     private javax.swing.JButton agregarProductoButton;
@@ -1040,6 +1136,7 @@ public class menuVendedor extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JButton limpiar;
     private javax.swing.JList<String> listaProductosLLevarList;
     private javax.swing.JComboBox<String> medioPagoComboBox;
     private javax.swing.JPanel menu;

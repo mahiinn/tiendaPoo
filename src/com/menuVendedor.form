@@ -207,7 +207,7 @@
                                       <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="jLabel2" max="32767" attributes="0"/>
+                                      <Component id="jLabel2" pref="86" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
@@ -248,9 +248,13 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="debeTextField" min="-2" pref="128" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="realizarCompraButton" min="-2" pref="128" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="realizarCompraButton" min="-2" pref="128" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="limpiar" min="-2" pref="128" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" pref="370" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           </Group>
@@ -301,8 +305,11 @@
                                   <Component id="debeTextField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="realizarCompraButton" min="-2" pref="32" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="117" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="realizarCompraButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="limpiar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="101" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane2" max="32767" attributes="0"/>
                       </Group>
@@ -559,6 +566,9 @@
                       </Border>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cantProductoTextFieldActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel12">
                   <Properties>
@@ -741,6 +751,14 @@
                   </Border>
                 </Property>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="limpiar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Limpiar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="limpiarMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
