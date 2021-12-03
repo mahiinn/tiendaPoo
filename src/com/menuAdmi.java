@@ -55,18 +55,23 @@ public class menuAdmi extends javax.swing.JFrame {
         differentPages = new javax.swing.JTabbedPane();
         index = new javax.swing.JPanel();
         titleIndex = new javax.swing.JLabel();
-        llamarVendedor = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        verInventario = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        verVentas = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        verFacturas = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
         crearVendedor = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        idVendedor = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        nombreVendedor = new javax.swing.JTextField();
+        agregarVendedorButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
+        llamarProveedor = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        verInventario = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        verVentas = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        verFacturas = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -443,38 +448,100 @@ public class menuAdmi extends javax.swing.JFrame {
 
         differentPages.addTab("tab1", index);
 
-        llamarVendedor.setBackground(new java.awt.Color(255, 255, 255));
+        crearVendedor.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/trabajando.jpg"))); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Id del vendedor");
 
-        jLabel4.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Estamos trabajando en esta funcionalidad :)");
+        idVendedor.setBackground(new java.awt.Color(255, 255, 255));
+        idVendedor.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        idVendedor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        idVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idVendedorActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout llamarVendedorLayout = new javax.swing.GroupLayout(llamarVendedor);
-        llamarVendedor.setLayout(llamarVendedorLayout);
-        llamarVendedorLayout.setHorizontalGroup(
-            llamarVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(llamarVendedorLayout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(50, 50, 50))
-            .addGroup(llamarVendedorLayout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jLabel6.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Nombre del vendedor");
+
+        nombreVendedor.setBackground(new java.awt.Color(255, 255, 255));
+        nombreVendedor.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        nombreVendedor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        nombreVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreVendedorActionPerformed(evt);
+            }
+        });
+
+        agregarVendedorButton.setText("Agregar Vendedor");
+        agregarVendedorButton.setPreferredSize(new java.awt.Dimension(124, 30));
+        agregarVendedorButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                agregarVendedorButtonMouseClicked(evt);
+            }
+        });
+        agregarVendedorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarVendedorButtonActionPerformed(evt);
+            }
+        });
+
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable5);
+
+        javax.swing.GroupLayout crearVendedorLayout = new javax.swing.GroupLayout(crearVendedor);
+        crearVendedor.setLayout(crearVendedorLayout);
+        crearVendedorLayout.setHorizontalGroup(
+            crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(crearVendedorLayout.createSequentialGroup()
+                .addGroup(crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(crearVendedorLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(idVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47)
+                        .addGroup(crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                            .addComponent(nombreVendedor)))
+                    .addGroup(crearVendedorLayout.createSequentialGroup()
+                        .addGap(235, 235, 235)
+                        .addComponent(agregarVendedorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(73, Short.MAX_VALUE))
+            .addComponent(jScrollPane2)
+        );
+        crearVendedorLayout.setVerticalGroup(
+            crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(crearVendedorLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombreVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(agregarVendedorButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        llamarVendedorLayout.setVerticalGroup(
-            llamarVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(llamarVendedorLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
-        );
 
-        differentPages.addTab("tab3", llamarVendedor);
+        differentPages.addTab("tab3", crearVendedor);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -488,9 +555,9 @@ public class menuAdmi extends javax.swing.JFrame {
             }
         ));
         jTable1.getTableHeader().setReorderingAllowed(false);
-        verInventario.setViewportView(jTable1);
+        llamarProveedor.setViewportView(jTable1);
 
-        differentPages.addTab("tab4", verInventario);
+        differentPages.addTab("tab4", llamarProveedor);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -503,9 +570,9 @@ public class menuAdmi extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        verVentas.setViewportView(jTable2);
+        verInventario.setViewportView(jTable2);
 
-        differentPages.addTab("tab5", verVentas);
+        differentPages.addTab("tab5", verInventario);
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -518,42 +585,39 @@ public class menuAdmi extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        verFacturas.setViewportView(jTable3);
+        verVentas.setViewportView(jTable3);
 
-        differentPages.addTab("tab6", verFacturas);
+        differentPages.addTab("tab6", verVentas);
 
-        crearVendedor.setBackground(new java.awt.Color(255, 255, 255));
+        verFacturas.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/trabajando.jpg"))); // NOI18N
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable4);
 
-        jLabel1.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Estamos trabajando en esta funcionalidad :)");
-
-        javax.swing.GroupLayout crearVendedorLayout = new javax.swing.GroupLayout(crearVendedor);
-        crearVendedor.setLayout(crearVendedorLayout);
-        crearVendedorLayout.setHorizontalGroup(
-            crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(crearVendedorLayout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(50, 50, 50))
-            .addGroup(crearVendedorLayout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout verFacturasLayout = new javax.swing.GroupLayout(verFacturas);
+        verFacturas.setLayout(verFacturasLayout);
+        verFacturasLayout.setHorizontalGroup(
+            verFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
         );
-        crearVendedorLayout.setVerticalGroup(
-            crearVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(crearVendedorLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
+        verFacturasLayout.setVerticalGroup(
+            verFacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(verFacturasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE))
         );
 
-        differentPages.addTab("tab2", crearVendedor);
+        differentPages.addTab("tab2", verFacturas);
 
         background.add(differentPages, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 7, 650, 593));
 
@@ -708,6 +772,22 @@ public class menuAdmi extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_closeLabelMouseClicked
 
+    private void idVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idVendedorActionPerformed
+
+    }//GEN-LAST:event_idVendedorActionPerformed
+
+    private void nombreVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreVendedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreVendedorActionPerformed
+
+    private void agregarVendedorButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarVendedorButtonMouseClicked
+        
+    }//GEN-LAST:event_agregarVendedorButtonMouseClicked
+
+    private void agregarVendedorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarVendedorButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agregarVendedorButtonActionPerformed
+
     public void verInventario(){
         int size = productos.size();
         String matriz [][] = new String[size][5];
@@ -742,6 +822,7 @@ public class menuAdmi extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton agregarVendedorButton;
     private javax.swing.JPanel background;
     private javax.swing.JLabel boligrafo;
     private javax.swing.JLabel bolsaCompra;
@@ -754,25 +835,29 @@ public class menuAdmi extends javax.swing.JFrame {
     private javax.swing.JTabbedPane differentPages;
     private javax.swing.JLabel factura;
     private javax.swing.JLabel header;
+    private javax.swing.JTextField idVendedor;
     private javax.swing.JPanel index;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTable5;
+    private javax.swing.JScrollPane llamarProveedor;
     private javax.swing.JPanel llamarProveedorButton;
     private javax.swing.JLabel llamarProveedorLabel;
-    private javax.swing.JPanel llamarVendedor;
     private javax.swing.JPanel menu;
     private javax.swing.JPanel menuClose;
+    private javax.swing.JTextField nombreVendedor;
     private javax.swing.JLabel telefono;
     private javax.swing.JLabel titleIndex;
     private javax.swing.JSeparator titleSeparator1;
-    private javax.swing.JScrollPane verFacturas;
+    private javax.swing.JPanel verFacturas;
     private javax.swing.JPanel verFacturasButton;
     private javax.swing.JLabel verFacturasLabel;
     private javax.swing.JScrollPane verInventario;
