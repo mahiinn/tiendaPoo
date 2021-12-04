@@ -10,6 +10,7 @@ public class loginAdmi extends javax.swing.JFrame {
     
     public loginAdmi() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")

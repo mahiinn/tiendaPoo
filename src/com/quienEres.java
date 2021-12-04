@@ -20,6 +20,10 @@ public class quienEres extends javax.swing.JFrame {
     app app = new app();
     public quienEres() {
         initComponents();
+        this.setLocationRelativeTo(null);
+
+//        app.contarFacturas();
+//        app.llenarFacturas();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

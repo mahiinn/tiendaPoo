@@ -174,12 +174,14 @@ public class app {
     }
 //    public ArrayList <String[]> contarFacturas(){
 //        File ruta = new File("D:\\Documentos\\NetBeansProjects\\tiendaPoo\\src\\facturas");
+//    public ArrayList <String[]> contarFacturas(){
+//        File ruta = new File("C:\\Users\\devin\\Desktop\\tiendaPoo\\src\\facturas\\");
 //        String [] variasFacturas = ruta.list();
 //        ArrayList <String[]> almacenFacturas = new ArrayList <>();
 //        for (int i = 0; i < variasFacturas.length; i++) {
 //            String texto="";
 //            try{
-//                BufferedReader buffer = new BufferedReader(new FileReader("D:\\Documentos\\NetBeansProjects\\tiendaPoo\\src\\facturas\\"+variasFacturas[i]));
+//                BufferedReader buffer = new BufferedReader(new FileReader("C:\\Users\\devin\\Desktop\\tiendaPoo\\src\\facturas\\"+variasFacturas[i]));
 //                String temp="";
 //                String bfRead;
 //                while ((bfRead=buffer.readLine())!=null){
@@ -195,7 +197,7 @@ public class app {
 //        }
 //        return almacenFacturas;
 //    }
-//    public void llenarFacturas(){
+//    public ArrayList <Factura> llenarFacturas(){
 //        ArrayList <String[]> backupFacturas=contarFacturas();
 //        Map<String,String> productoCantidad = new HashMap<>();
 //        int idFactura,cantProductos,posicionJ=3;
@@ -234,5 +236,6 @@ public class app {
 //            }
 //            facturas.add(new Factura(idFactura,cliente,"Patricio",fecha,estadoFactura,cantProductos,productoCantidad));
 //        }
+//        return facturas;
 //    }
 
