@@ -10,6 +10,7 @@ public class loginVendedor extends javax.swing.JFrame {
     
     public loginVendedor() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")

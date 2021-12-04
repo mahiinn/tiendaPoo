@@ -16,6 +16,7 @@ public class menuAdmi extends javax.swing.JFrame {
 
     public menuAdmi() {
         initComponents();
+        this.setLocationRelativeTo(null);
         ventas = tablas.ventas;
     }
 
@@ -652,7 +653,7 @@ public class menuAdmi extends javax.swing.JFrame {
     }//GEN-LAST:event_crearVendedorLabelMouseEntered
 
     private void crearVendedorLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearVendedorLabelMouseExited
-        if (differentPages.getSelectedIndex() == 1) {
+        if (differentPages.getSelectedIndex()==1) {
             cambiarColor(crearVendedorButton, crearVendedorLabel, new Color(153, 153, 153), WHITE);
         } else {
             cambiarColor(crearVendedorButton, crearVendedorLabel, BLACK, WHITE);
@@ -673,7 +674,7 @@ public class menuAdmi extends javax.swing.JFrame {
     }//GEN-LAST:event_llamarProveedorLabelMouseEntered
 
     private void llamarProveedorLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_llamarProveedorLabelMouseExited
-        if (differentPages.getSelectedIndex() == 1) {
+        if (differentPages.getSelectedIndex() ==2) {
             cambiarColor(llamarProveedorButton, llamarProveedorLabel, new Color(153, 153, 153), WHITE);
         } else {
             cambiarColor(llamarProveedorButton, llamarProveedorLabel, BLACK, WHITE);
@@ -696,7 +697,7 @@ public class menuAdmi extends javax.swing.JFrame {
     }//GEN-LAST:event_verInventarioLabelMouseEntered
 
     private void verInventarioLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verInventarioLabelMouseExited
-        if (differentPages.getSelectedIndex() == 1) {
+        if (differentPages.getSelectedIndex() ==3) {
             cambiarColor(verInventarioButton, verInventarioLabel, new Color(153, 153, 153), WHITE);
         } else {
             cambiarColor(verInventarioButton, verInventarioLabel, BLACK, WHITE);
@@ -718,7 +719,7 @@ public class menuAdmi extends javax.swing.JFrame {
     }//GEN-LAST:event_verVentasLabelMouseEntered
 
     private void verVentasLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verVentasLabelMouseExited
-        if (differentPages.getSelectedIndex() == 1) {
+        if (differentPages.getSelectedIndex() == 4) {
             cambiarColor(verVentasButton, verVentasLabel, new Color(153, 153, 153), WHITE);
         } else {
             cambiarColor(verVentasButton, verVentasLabel, BLACK, WHITE);
@@ -739,7 +740,7 @@ public class menuAdmi extends javax.swing.JFrame {
     }//GEN-LAST:event_verFacturasLabelMouseEntered
 
     private void verFacturasLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verFacturasLabelMouseExited
-        if (differentPages.getSelectedIndex() == 1) {
+        if (differentPages.getSelectedIndex() == 5) {
             cambiarColor(verFacturasButton, verFacturasLabel, new Color(153, 153, 153), WHITE);
         } else {
             cambiarColor(verFacturasButton, verFacturasLabel, BLACK, WHITE);

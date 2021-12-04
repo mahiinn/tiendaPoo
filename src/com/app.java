@@ -138,68 +138,68 @@ public class app {
         }
         productosCantidad.clear();
     }
-    public ArrayList <String[]> contarFacturas(){
-        File ruta = new File("C:\\Users\\devin\\Desktop\\tiendaPoo\\src\\facturas\\");
-        String [] variasFacturas = ruta.list();
-        ArrayList <String[]> almacenFacturas = new ArrayList <>();
-        for (int i = 0; i < variasFacturas.length; i++) {
-            String texto="";
-            try{
-                BufferedReader buffer = new BufferedReader(new FileReader("C:\\Users\\devin\\Desktop\\tiendaPoo\\src\\facturas\\"+variasFacturas[i]));
-                String temp="";
-                String bfRead;
-                while ((bfRead=buffer.readLine())!=null){
-                    //hacer el ciclo, mientras bfRead tiene datos
-                    temp = temp+bfRead+"\n";
-                }
-                texto=temp;
-            }catch (IOException ex) {
-                System.out.println("No se encontró archivo "+ex);
-            }
-            String[] array = texto.lines().toArray(String[]::new);
-            almacenFacturas.add(array);
-        }
-        return almacenFacturas;
-    }
-    public ArrayList <Factura> llenarFacturas(){
-        ArrayList <String[]> backupFacturas=contarFacturas();
-        Map<String,String> productoCantidad = new HashMap<>();
-        int idFactura,cantProductos,posicionJ=3;
-        String cliente,vendedor,fecha,estado,productos,idProducto,cantProducto;
-        double total;
-        for (int i = 0; i < backupFacturas.size(); i++) {
-            //int idFactura String Cliente, String Vendedor, String Fecha, boolean estadoCancelacion, int CantProducto,producutosCantidad
-            idFactura=Integer.parseInt(backupFacturas.get(i)[0].replaceAll("-", ""));
-            fecha=backupFacturas.get(i)[1].replaceAll("-", "");
-            for (int j = 1; j < backupFacturas.get(i).length; j++) {
-               if(backupFacturas.get(i)[j].equals("Nombre del vendedor: Patricio")){
-                     posicionJ=j;
-                }
-            }
-            for (int j = 2; j < posicionJ; j++) {
-//                    listaProductos+=i+" "+productos.get(j).getNombre()+" "+productosCantidad.get(i)
-//                    +" x "+Double.toString(productos.get(j).getPrecio())+"................."
-//                    +Double.toString(Integer.parseInt(productosCantidad.get(i))*productos.get(j).getPrecio())+"\n";
-                productos=backupFacturas.get(i)[j];
-                String [] producto = productos.split(" ");
-                idProducto=producto[0];
-                cantProducto=producto[2];
-                productoCantidad.put(idProducto,cantProducto);
-            }
-            int nuevaPosicion=posicionJ+1;
-           
-            cliente=backupFacturas.get(i)[nuevaPosicion];
-            cantProductos=Integer.parseInt(backupFacturas.get(i)[nuevaPosicion+1]);
-            total=Double.parseDouble(backupFacturas.get(i)[nuevaPosicion+2]);
-            estado=backupFacturas.get(i)[nuevaPosicion+3];
-            boolean estadoFactura;
-            if(estado.equals("Facutra Cancelada")){
-                estadoFactura=true;
-            }else{
-                estadoFactura=false;
-            }
-            facturas.add(new Factura(idFactura,cliente,"Patricio",fecha,estadoFactura,cantProductos,productoCantidad));
-        }
-        return facturas;
-    }
+//    public ArrayList <String[]> contarFacturas(){
+//        File ruta = new File("C:\\Users\\devin\\Desktop\\tiendaPoo\\src\\facturas\\");
+//        String [] variasFacturas = ruta.list();
+//        ArrayList <String[]> almacenFacturas = new ArrayList <>();
+//        for (int i = 0; i < variasFacturas.length; i++) {
+//            String texto="";
+//            try{
+//                BufferedReader buffer = new BufferedReader(new FileReader("C:\\Users\\devin\\Desktop\\tiendaPoo\\src\\facturas\\"+variasFacturas[i]));
+//                String temp="";
+//                String bfRead;
+//                while ((bfRead=buffer.readLine())!=null){
+//                    //hacer el ciclo, mientras bfRead tiene datos
+//                    temp = temp+bfRead+"\n";
+//                }
+//                texto=temp;
+//            }catch (IOException ex) {
+//                System.out.println("No se encontró archivo "+ex);
+//            }
+//            String[] array = texto.lines().toArray(String[]::new);
+//            almacenFacturas.add(array);
+//        }
+//        return almacenFacturas;
+//    }
+//    public ArrayList <Factura> llenarFacturas(){
+//        ArrayList <String[]> backupFacturas=contarFacturas();
+//        Map<String,String> productoCantidad = new HashMap<>();
+//        int idFactura,cantProductos,posicionJ=3;
+//        String cliente,vendedor,fecha,estado,productos,idProducto,cantProducto;
+//        double total;
+//        for (int i = 0; i < backupFacturas.size(); i++) {
+//            //int idFactura String Cliente, String Vendedor, String Fecha, boolean estadoCancelacion, int CantProducto,producutosCantidad
+//            idFactura=Integer.parseInt(backupFacturas.get(i)[0].replaceAll("-", ""));
+//            fecha=backupFacturas.get(i)[1].replaceAll("-", "");
+//            for (int j = 1; j < backupFacturas.get(i).length; j++) {
+//               if(backupFacturas.get(i)[j].equals("Nombre del vendedor: Patricio")){
+//                     posicionJ=j;
+//                }
+//            }
+//            for (int j = 2; j < posicionJ; j++) {
+////                    listaProductos+=i+" "+productos.get(j).getNombre()+" "+productosCantidad.get(i)
+////                    +" x "+Double.toString(productos.get(j).getPrecio())+"................."
+////                    +Double.toString(Integer.parseInt(productosCantidad.get(i))*productos.get(j).getPrecio())+"\n";
+//                productos=backupFacturas.get(i)[j];
+//                String [] producto = productos.split(" ");
+//                idProducto=producto[0];
+//                cantProducto=producto[2];
+//                productoCantidad.put(idProducto,cantProducto);
+//            }
+//            int nuevaPosicion=posicionJ+1;
+//           
+//            cliente=backupFacturas.get(i)[nuevaPosicion];
+//            cantProductos=Integer.parseInt(backupFacturas.get(i)[nuevaPosicion+1]);
+//            total=Double.parseDouble(backupFacturas.get(i)[nuevaPosicion+2]);
+//            estado=backupFacturas.get(i)[nuevaPosicion+3];
+//            boolean estadoFactura;
+//            if(estado.equals("Facutra Cancelada")){
+//                estadoFactura=true;
+//            }else{
+//                estadoFactura=false;
+//            }
+//            facturas.add(new Factura(idFactura,cliente,"Patricio",fecha,estadoFactura,cantProductos,productoCantidad));
+//        }
+//        return facturas;
+//    }
 }

@@ -36,8 +36,8 @@ public class menuVendedor extends javax.swing.JFrame {
         abonoTextField.setEditable(false);
         numeroCuotas.setEditable(false);
         debeTextField.setEditable(false);
-        app.contarFacturas();
-        app.llenarFacturas();
+//        app.contarFacturas();
+//        app.llenarFacturas();
     }
 
 //    public void crearFactura(String Cliente, String Vendedor, String Fecha, String Estado, int CantProducto) throws IOException {
