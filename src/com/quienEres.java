@@ -65,7 +65,7 @@ public class quienEres extends javax.swing.JFrame {
         closeButtonLabel.setForeground(new java.awt.Color(0, 0, 0));
         closeButtonLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         closeButtonLabel.setText("X");
-        closeButtonLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        closeButtonLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         closeButtonLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         closeButtonLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -113,7 +113,7 @@ public class quienEres extends javax.swing.JFrame {
         admiLabel.setForeground(new java.awt.Color(255, 255, 255));
         admiLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         admiLabel.setText("Administrador");
-        admiLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        admiLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         admiLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         admiLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -147,7 +147,7 @@ public class quienEres extends javax.swing.JFrame {
         vendedorLabel.setForeground(new java.awt.Color(0, 0, 0));
         vendedorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         vendedorLabel.setText("Vendedor");
-        vendedorLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        vendedorLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         vendedorLabel.setPreferredSize(null);
         vendedorLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
