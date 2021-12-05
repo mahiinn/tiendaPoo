@@ -169,7 +169,7 @@ public class menuVendedor extends javax.swing.JFrame {
         closeLabel.setForeground(new java.awt.Color(0, 0, 0));
         closeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         closeLabel.setText("X");
-        closeLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        closeLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         closeLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 closeLabelMouseClicked(evt);
@@ -322,7 +322,6 @@ public class menuVendedor extends javax.swing.JFrame {
         precioUnitario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         agregarProductoButton.setText("Agregar Producto");
-        agregarProductoButton.setPreferredSize(new java.awt.Dimension(124, 30));
         agregarProductoButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 agregarProductoButtonMouseClicked(evt);
@@ -355,15 +354,15 @@ public class menuVendedor extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(productoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(productoPanelLayout.createSequentialGroup()
-                                .addComponent(agregarProductoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(productoPanelLayout.createSequentialGroup()
                                 .addGroup(productoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(productoPanelLayout.createSequentialGroup()
                                         .addComponent(precioUnitario)
                                         .addGap(2, 2, 2)))
-                                .addGap(75, 75, 75))))
+                                .addGap(75, 75, 75))
+                            .addGroup(productoPanelLayout.createSequentialGroup()
+                                .addComponent(agregarProductoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(productoPanelLayout.createSequentialGroup()
                         .addComponent(nombreProductoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -390,7 +389,7 @@ public class menuVendedor extends javax.swing.JFrame {
                     .addComponent(precioUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cantProductoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(agregarProductoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(agregarProductoButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -423,7 +422,6 @@ public class menuVendedor extends javax.swing.JFrame {
             }
         });
 
-        listaProductosLLevarList.setBackground(new java.awt.Color(255, 255, 255));
         listaProductosLLevarList.setForeground(new java.awt.Color(0, 0, 0));
         listaProductosLLevarList.setToolTipText("");
         jScrollPane2.setViewportView(listaProductosLLevarList);
@@ -454,10 +452,10 @@ public class menuVendedor extends javax.swing.JFrame {
                     .addGroup(realizarVentaLayout.createSequentialGroup()
                         .addGroup(realizarVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(realizarVentaLayout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(139, 139, 139))
                             .addGroup(realizarVentaLayout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(202, 202, 202))
                             .addGroup(realizarVentaLayout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -599,14 +597,14 @@ public class menuVendedor extends javax.swing.JFrame {
         titleSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
         realizarVentaButton.setBackground(new java.awt.Color(0, 0, 0));
-        realizarVentaButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        realizarVentaButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         realizarVentaButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         realizarVentaLabel.setFont(new java.awt.Font("Poppins", 1, 13)); // NOI18N
         realizarVentaLabel.setForeground(new java.awt.Color(255, 255, 255));
         realizarVentaLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         realizarVentaLabel.setText("Realizar Venta");
-        realizarVentaLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        realizarVentaLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         realizarVentaLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         realizarVentaLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -625,19 +623,19 @@ public class menuVendedor extends javax.swing.JFrame {
         monedaDolar.setForeground(new java.awt.Color(255, 255, 255));
         monedaDolar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         monedaDolar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/monedas-de-dolar.png"))); // NOI18N
-        monedaDolar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        monedaDolar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         monedaDolar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         realizarVentaButton.add(monedaDolar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 70, 45));
 
         verInventarioButton.setBackground(new java.awt.Color(0, 0, 0));
-        verInventarioButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verInventarioButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         verInventarioButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         verInventarioLabel.setFont(new java.awt.Font("Poppins", 1, 13)); // NOI18N
         verInventarioLabel.setForeground(new java.awt.Color(255, 255, 255));
         verInventarioLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         verInventarioLabel.setText("Ver inventario");
-        verInventarioLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verInventarioLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         verInventarioLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         verInventarioLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -657,19 +655,19 @@ public class menuVendedor extends javax.swing.JFrame {
         cajaPaquete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cajaPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/caja-del-paquete.png"))); // NOI18N
         cajaPaquete.setToolTipText("");
-        cajaPaquete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cajaPaquete.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cajaPaquete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         verInventarioButton.add(cajaPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 70, 45));
 
         verVentasButton.setBackground(new java.awt.Color(0, 0, 0));
-        verVentasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verVentasButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         verVentasButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         verVentasLabel.setFont(new java.awt.Font("Poppins", 1, 13)); // NOI18N
         verVentasLabel.setForeground(new java.awt.Color(255, 255, 255));
         verVentasLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         verVentasLabel.setText("Ver ventas");
-        verVentasLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verVentasLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         verVentasLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         verVentasLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -688,7 +686,7 @@ public class menuVendedor extends javax.swing.JFrame {
         bolsaCompra.setForeground(new java.awt.Color(255, 255, 255));
         bolsaCompra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bolsaCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bolsa-de-la-compra.png"))); // NOI18N
-        bolsaCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bolsaCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bolsaCompra.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         verVentasButton.add(bolsaCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 0, 70, 45));
 
@@ -699,7 +697,7 @@ public class menuVendedor extends javax.swing.JFrame {
         verFacturasLabel.setForeground(new java.awt.Color(255, 255, 255));
         verFacturasLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         verFacturasLabel.setText("Ver facturas");
-        verFacturasLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verFacturasLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         verFacturasLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         verFacturasLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -718,7 +716,7 @@ public class menuVendedor extends javax.swing.JFrame {
         factura.setForeground(new java.awt.Color(255, 255, 255));
         factura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         factura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/factura.png"))); // NOI18N
-        factura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        factura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         factura.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         verFacturasButton.add(factura, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 70, 45));
 

@@ -21,14 +21,13 @@ public class Factura {
     private int CantProducto;
     private Map<String,String> productosCantidad = new HashMap<>();
 
-    public Factura(int idFactura, String Cliente, String Vendedor, String Fecha, boolean estadoCancelacion, int CantProducto,Map<String,String> productosCantidad) {
+    public Factura(int idFactura, String Cliente, String Vendedor, String Fecha, boolean estadoCancelacion, int CantProducto) {
         this.idFactura=idFactura;
         this.Cliente = Cliente;
         this.Vendedor = Vendedor;
         this.Fecha = Fecha;
         this.estadoCancelacion = estadoCancelacion;
         this.CantProducto = CantProducto;
-        this.productosCantidad = productosCantidad;
     }
 
     public int getIdFactura() {

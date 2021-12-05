@@ -13,34 +13,44 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.net.URL;
 
 public class app {
-    
-    public ArrayList <Factura> facturas = new ArrayList();
-    Map<String,String> productosCantidad = new HashMap<>();
+
+    public ArrayList<Factura> facturas = new ArrayList();
+    Map<String, String> productosCantidad = new HashMap<>();
     Random rd = new Random();
     int idFactura;
     String listaProductos;
     BufferedWriter bw;
-    FileWriter fw; 
+    FileWriter fw;
+    public  String nomVendedor;
 
-            public static String fechaHoy() {
+    public static String fechaHoy() {
         Date objDate = new Date();
-        String strDateFormat = "hh: mm: ss a dd-MMM-aaaa"; // El formato de fecha está especificado  
+        String strDateFormat = "yyyy-MM-dd HH:mm:ss"; // El formato de fecha está especificado  
         SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat); // La cadena de formato de fecha se pasa como un argumento al objeto de formato de fecha  
         //System.out.println(objSDF.format(objDate)); // El formato de fecha se aplica a la fecha actual
         return objSDF.format(objDate);
     }
-    public ArrayList <Factura> verFacturas(){
+
+    public ArrayList<Factura> verFacturas() {
         return facturas;
     }
+
     public static void llenarComboBox(JComboBox comboBox) {
         comboBox.addItem("Seleccionar un método de pago");
         comboBox.addItem("Crédido de contado");
         comboBox.addItem("Crédito a cuotas");
     }
 
-    public  static ArrayList <Producto> idProductos() {
+    public static ArrayList<Producto> idProductos() {
         ArrayList<Producto> productos = new ArrayList();
 
         productos.add(new Producto(1, "pantalon", "moda", 200, 1000));
@@ -70,22 +80,68 @@ public class app {
         return userAdmi.toLowerCase().equals("eladmin") && contraseña.equals("5695");
 
     }
-
-    public static boolean confirmarVendedor(String userAdmi, char[] password) {
+    
+    public static boolean confirmarVendedor(String userVendedor, char[] password) {
+        Conexion objConexion = new Conexion();
+//        nomVendedor=userVendedor;
         String contraseña = "";
         for (int i = 0; i < password.length; i++) {
             contraseña = String.valueOf(password);
         }
-        return userAdmi.toLowerCase().equals("vendedor1") && contraseña.equals("5695");
+        String sql = "SELECT * FROM vendedor WHERE nom_vendedor='" + userVendedor + "'AND password=" + contraseña;
+        try (Connection conn = objConexion.Conexion(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            } else {
+                rs.close();
+                return false;
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
     }
-    
-    public Map<String,String> productosCantidadLlevar(int idProducto,int cant){
-        
-        productosCantidad.put(Integer.toString(idProducto),Integer.toString(cant));
+
+    public void crearFactura() {
+        Conexion objConexion = new Conexion();
+        String sql = "SELECT * FROM factura";
+        try (Connection conn = objConexion.Conexion(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            if (!rs.next()) {
+                idFactura = rd.nextInt(10000000) + 1;
+            } else {
+                boolean continuar;
+                do {
+                    idFactura = rd.nextInt(10000000) + 1;
+                    sql = "SELECT * FROM factura WHERE cod_factura=" + idFactura;
+                    PreparedStatement ps2 = conn.prepareStatement(sql);
+                    ResultSet rs2 = ps2.executeQuery();
+                    if (rs.next()) {
+                        continuar = true;
+                    } else {
+                        continuar = false;
+                    }
+                } while (continuar == false);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+//        sql="INSERT INTO factura (`cod_factura`, "
+//                + "`cod_cliente`, `cod_vendedor`, `fecha_venta`, "
+//                + "`cod_mediopago`, `total_pagar`)"
+//                + "VALUES ("+idFactura+","+""+","+nomVendedor+")";
+//                return new Factura(idFactura, Cliente, "Patricio", Fecha, Estado, CantProducto, pCantidad);
+//
+    }
+
+    public Map<String, String> productosCantidadLlevar(int idProducto, int cant) {
+        productosCantidad.put(Integer.toString(idProducto), Integer.toString(cant));
         return productosCantidad;
     }
-    
-    
+
 //    public String comparaproductos (){
 //        ArrayList<Producto> productos = idProductos();
 //   
@@ -100,10 +156,10 @@ public class app {
 //        }
 //        return listaProductos;
 //    }
-    public Factura realizarVenta(String Cliente, String Fecha, boolean Estado, int CantProducto,double total,Map<String,String> pCantidad){
-        if(facturas.isEmpty()){
-            idFactura=rd.nextInt(10000000)+1;
-        }else{
+    public Factura realizarVenta(String Cliente, String Fecha, boolean Estado, int CantProducto, double total, Map<String, String> pCantidad) {
+        if (facturas.isEmpty()) {
+            idFactura = rd.nextInt(10000000) + 1;
+        } else {
             boolean continuar;
             do {
                 idFactura = rd.nextInt(10000000) + 1;
@@ -114,10 +170,11 @@ public class app {
                 }
             } while (continuar = true);
         }
-        return new Factura(idFactura, Cliente, "Patricio", Fecha, Estado, CantProducto,pCantidad);
-        
+        return new Factura(idFactura, Cliente, "Patricio", Fecha, Estado, CantProducto);
+
     }
-    public void limpiar(){
+
+    public void limpiar() {
         productosCantidad.clear();
     }
 //    public void realizarFactura(String Cliente, String Fecha, boolean Estado, int CantProducto, double total) {
@@ -170,8 +227,7 @@ public class app {
 //        };
 //        Thread hilo = new Thread (miRunnable);
 //        hilo.start();
-        
-    }
+}
 //    public ArrayList <String[]> contarFacturas(){
 //        File ruta = new File("D:\\Documentos\\NetBeansProjects\\tiendaPoo\\src\\facturas");
 //    public ArrayList <String[]> contarFacturas(){
